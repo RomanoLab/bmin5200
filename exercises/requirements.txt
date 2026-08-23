@@ -1,0 +1,36 @@
+# Everything the 13 in-class notebooks need, for running them locally.
+# In Colab you do not need this file — each notebook installs what it uses.
+#
+#   pip install -r requirements.txt
+
+# Core — preinstalled in Colab
+numpy>=1.26
+pandas>=2.0
+matplotlib>=3.8
+networkx>=3.2
+jupyterlab>=4.0
+
+# Week 2 — cross-checking the hand-rolled model checker
+sympy>=1.12
+
+# Weeks 5, 9, 11, 12 — machine learning
+scikit-learn>=1.4
+
+# Week 3 — live RxNav terminology lookup (falls back to bundled data offline)
+requests>=2.31
+
+# Week 7 — CLIPS expert system shell
+clipspy>=1.0
+
+# Week 8 — Bayesian networks
+pgmpy>=1.0
+
+# Week 10 — tokenization and attention. torch is a large download; if you only
+# want Parts 1 and 2, `tokenizers` alone is enough.
+transformers>=4.40
+tokenizers>=0.19
+torch>=2.0
+
+# Week 11 — post-hoc explanation
+shap>=0.44
+lime>=0.2

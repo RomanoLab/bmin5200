@@ -1,0 +1,60 @@
+# BMIN 5200 — link table
+#
+# Two tab-separated columns: key<TAB>url
+# Paste the real URL after the tab. Leave a row alone to keep it unfilled;
+# apply_links.py will report exactly what is still missing.
+#
+# Then run:   python3 tools/apply_links.py
+# Publish:    the contents of build/
+#
+# Box links: use "Share > Copy link" and set the audience to
+# "People in your company" so PennKey SSO is required.
+# ---------------------------------------------------------------------------
+
+# GitHub. This one is NOT a URL — it is just owner/repo, because it gets
+# substituted into both github.com/... and colab.research.google.com/github/...
+# Example:  github-repo	RomanoLab/bmin5200
+github-repo	RomanoLab/bmin5200
+
+# Course-level links
+syllabus-pdf
+setup-guide
+canvas
+final-project-instructions
+project-video-upload
+clips-reference
+papers-archive
+
+# Homework — link to the assignment file (.ipynb or .zip) on Box
+hw1
+hw2
+hw3
+hw4
+
+# Lecture slides, one per meeting
+slides-week01
+slides-week02
+slides-week03
+slides-week04
+slides-week05
+slides-week06
+slides-week07
+slides-week08
+slides-week09
+slides-week10
+slides-week11
+slides-week12
+slides-week13
+
+# Journal club papers. Weeks 1 and 2 have no journal club.
+paper-week03	# Babalou et al.
+paper-week04	# Wolpert & Macready (1997)
+paper-week05	# Nagarajan & Babu
+paper-week06	# Shortliffe et al. (1973)
+paper-week07	# Michalowski et al.
+paper-week08	# Leclerc et al.
+paper-week09	# Shen et al.
+paper-week10	# Vaswani et al. (2017)
+paper-week11	# Behrad et al.
+paper-week12	# Pfohl et al.
+paper-week13	# Thirunavukarasu et al.

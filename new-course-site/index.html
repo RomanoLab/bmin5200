@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMIN 5200 — Foundations of AI in Health</title>
+<meta name="description" content="BMIN 5200: Foundations of Artificial Intelligence in Health. University of Pennsylvania, Fall 2026.">
+
+<!-- =====================================================================
+     BMIN 5200 course site. One file, no build step, no dependencies.
+
+     TO EDIT THE SCHEDULE: every class meeting is one <tr> in the table at
+     the bottom. Copy a row, change the date, topic, and links. Rows for
+     weeks with no class use class="off".
+
+     LINKS: hrefs beginning with the LINK prefix are placeholders. Fill them
+     in by editing links.tsv and running:  python3 tools/apply_links.py
+     That writes resolved copies into build/, which is what gets published.
+     ===================================================================== -->
+
+<style>
+  /* Light palette only. The page is deliberately dark-on-light in every
+     browser, regardless of the reader's OS theme setting -- color-scheme
+     below keeps scrollbars and form controls light to match. */
+  :root {
+    color-scheme: light;
+    --ink:        #1a1a1a;
+    --ink-soft:   #5a5f66;
+    --rule:       #e2e4e8;
+    --bg:         #ffffff;
+    --bg-soft:    #f6f7f9;
+    --accent:     #8c1515;
+    --accent-bg:  #fdf3f3;
+    --off:        #9aa0a6;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    padding: 0 1.25rem 5rem;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .wrap { max-width: 66rem; margin: 0 auto; }
+
+  /* ---------- page layout: sidebar + one content column ----------
+     Everything in the content column is single-column by design. Do not
+     reintroduce side-by-side text blocks. */
+
+  .layout {
+    display: grid;
+    grid-template-columns: 13.5rem minmax(0, 1fr);
+    gap: 0 3rem;
+    align-items: start;
+  }
+
+  main { max-width: 46rem; min-width: 0; }
+
+  /* ---------- left sidebar nav ---------- */
+
+  .sidenav {
+    position: sticky;
+    top: 1.5rem;
+    font-size: .875rem;
+    padding-right: 1rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+  }
+  .sidenav ul { list-style: none; margin: 0; padding: 0; }
+  .sidenav > ul > li { margin-bottom: 1.1rem; }
+  .sidenav a { text-decoration: none; display: block; }
+  .sidenav a:hover { text-decoration: underline; }
+  .sidenav > ul > li > a {
+    font-weight: 600;
+    color: var(--ink);
+    padding: .15rem 0;
+  }
+  .sidenav > ul > li > a:hover { color: var(--accent); }
+  .sidenav ul ul { margin-top: .3rem; }
+  .sidenav ul ul a {
+    color: var(--ink-soft);
+    font-size: .82rem;
+    line-height: 1.4;
+    padding: .16rem 0 .16rem .7rem;
+    border-left: 1px solid var(--rule);
+  }
+  .sidenav ul ul a:hover { color: var(--accent); border-left-color: var(--accent); }
+
+  /* Landing spot when a nav link jumps to a heading. */
+  section, main h3 { scroll-margin-top: 1.5rem; }
+
+  @media (max-width: 60rem) {
+    .layout { grid-template-columns: 1fr; gap: 0; }
+    .sidenav {
+      position: static;
+      max-height: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 0 0 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .sidenav > ul { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+    .sidenav > ul > li { margin-bottom: 0; }
+    .sidenav ul ul { display: none; }
+    main { max-width: none; }
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  /* ---------- header ---------- */
+
+  header {
+    border-bottom: 3px solid var(--accent);
+    padding: 2.5rem 0 1.5rem;
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    margin: 0 0 .3rem;
+    font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -.02em;
+  }
+  header .course-num {
+    display: block;
+    font-size: .8rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: .5rem;
+  }
+  header .meta {
+    color: var(--ink-soft);
+    font-size: .95rem;
+    margin: .75rem 0 0;
+  }
+  header .meta strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- sections ---------- */
+
+  section { margin: 0 0 3.5rem; }
+  section > h2 {
+    font-size: 1.35rem;
+    margin: 0 0 1.25rem;
+    padding-bottom: .4rem;
+    border-bottom: 1px solid var(--rule);
+    letter-spacing: -.01em;
+  }
+  h3 { font-size: 1rem; margin: 1.75rem 0 .5rem; }
+  p { margin: 0 0 1rem; }
+
+  .lede { font-size: 1.05rem; }
+
+  dl.facts { margin: 0; }
+  dl.facts dt {
+    font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-soft); margin-top: 1rem;
+  }
+  dl.facts dd { margin: .15rem 0 0; }
+
+  ul.tight { margin: 0 0 1rem; padding-left: 1.15rem; }
+  ul.tight li { margin-bottom: .3rem; }
+
+  table.grading { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+  table.grading td { padding: .4rem 0; border-bottom: 1px solid var(--rule); }
+  table.grading td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .callout {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--accent);
+    padding: .9rem 1.1rem;
+    margin: 1.25rem 0;
+    font-size: .95rem;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ---------- resources ---------- */
+
+  .res-group { margin-bottom: 2rem; }
+  .res-group ul { list-style: none; margin: 0; padding: 0; }
+  .res-group li { padding: .35rem 0; border-bottom: 1px solid var(--rule); }
+  .res-group li .note { color: var(--ink-soft); font-size: .85rem; display: block; }
+
+  /* ---------- schedule ---------- */
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  table.schedule {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 42rem;
+    font-size: .93rem;
+  }
+  table.schedule th {
+    text-align: left;
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+    padding: 0 .75rem .5rem 0;
+    border-bottom: 2px solid var(--rule);
+  }
+  table.schedule td {
+    padding: .85rem .75rem .85rem 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  table.schedule td.wk {
+    width: 2.5rem; color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  table.schedule td.date { width: 6rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  table.schedule td.topic { width: 21rem; font-weight: 600; }
+  table.schedule td.topic .jc {
+    display: block; font-weight: 400; font-size: .85rem; color: var(--ink-soft); margin-top: .2rem;
+  }
+  table.schedule td.links a { display: inline-block; margin: 0 .9rem .2rem 0; white-space: nowrap; }
+  table.schedule tr.off td { color: var(--off); font-style: italic; }
+  table.schedule tr.off td.topic { font-weight: 400; }
+  table.schedule tr.due td.links { font-weight: 600; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+    color: var(--ink-soft);
+    font-size: .85rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="course-num">BMIN 5200-001 &middot; Fall 2026</span>
+  <h1>Foundations of Artificial Intelligence in Health</h1>
+  <p class="meta">
+    <strong>Thursdays, 3:30&ndash;6:30pm</strong> &middot; 3600 Civic Center Blvd, Room 6E 031<br>
+    August 27 &ndash; December 3, 2026<br>
+    <strong>Joseph D. Romano, PhD</strong> &middot;
+    <a href="mailto:joseph.romano@pennmedicine.upenn.edu">joseph.romano@pennmedicine.upenn.edu</a>
+  </p>
+</header>
+
+<div class="layout">
+
+<!-- ==================================================================
+     SIDEBAR NAV. Every entry is a plain #anchor. If you add or rename a
+     heading in the content column, change its id here too.
+     ================================================================== -->
+<nav class="sidenav" aria-label="Page sections">
+  <ul>
+    <li>
+      <a href="#info">Course information</a>
+      <ul>
+        <li><a href="#objectives">Objectives</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#itinerary">Example lecture itinerary</a></li>
+        <li><a href="#grading">Grading</a></li>
+        <li><a href="#journal-club">Journal club</a></li>
+        <li><a href="#final-project">Final project</a></li>
+        <li><a href="#ai-policy">Generative AI policy</a></li>
+        <li><a href="#accommodations">Disability accommodations</a></li>
+        <li><a href="#office-hours">Office hours</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#resources">Resources</a>
+      <ul>
+        <li><a href="#documents">Course documents</a></li>
+        <li><a href="#assignments">Homework</a></li>
+        <li><a href="#project-files">Final project files</a></li>
+        <li><a href="#references">Reference material</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#schedule">Schedule</a>
+    </li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ==================================================================
+     COURSE INFORMATION
+     ================================================================== -->
+<section id="info">
+  <h2>Course information</h2>
+
+  <p class="lede">
+    Artificial intelligence is often used interchangeably with machine learning &mdash; but ML is
+    a subfield of AI concerned with <em>inductive</em> reasoning, and a great deal of what
+    biomedical informatics actually deploys rests on <em>deductive</em> reasoning instead. This
+    course covers those founding principles: knowledge representation, logic, ontologies,
+    search, rule-based expert systems, and probabilistic inference. Machine learning shows up
+    in the last few weeks, for contrast.
+  </p>
+
+  <p>
+    The course is about how biomedical data can be organized, represented,
+    interpreted, searched, and applied in order to derive knowledge, make decisions, and
+    ultimately make predictions while mitigating bias. BMIN 5200 is the first of three: it is
+    followed by BMIN 5210 (Machine Learning) and BMIN 5220 (Natural Language Processing).
+  </p>
+
+  <h3 id="objectives">Objectives</h3>
+  <ul class="tight">
+    <li>Describe the challenges of representing human knowledge <em>in silico</em></li>
+    <li>Explain the difference between deduction and induction, and the role of both in AI</li>
+    <li>Discuss past and current obstacles to implementing AI in biomedical domains</li>
+    <li>Show how common AI approaches address real biomedical problems</li>
+    <li>Implement core AI methods in Python &mdash; not only describe them</li>
+  </ul>
+
+  <h3 id="prerequisites">Prerequisites</h3>
+  <p>
+    Familiarity with basic biomedical concepts and terminology, statistics, and computer
+    programming. BMIN 5010, BMIN 5030, and a programming course are suggested but not
+    required. All programming is in Python. No previous exposure to AI is assumed.
+  </p>
+
+  <h3 id="itinerary">Example lecture itinerary</h3>
+  <dl class="facts">
+    <dt>0&ndash;30 min</dt><dd>Homework review</dd>
+    <dt>~60 min</dt><dd>Lecture</dd>
+    <dt>~25 min</dt><dd>In-class coding exercise</dd>
+    <dt>10 min</dt><dd>Break</dd>
+    <dt>~25 min</dt><dd>Journal club</dd>
+  </dl>
+
+  <h3 id="grading">Grading</h3>
+  <table class="grading">
+    <tr><td>Assignments (four, weighted equally)</td><td>50%</td></tr>
+    <tr><td>Final project</td><td>40%</td></tr>
+    <tr><td>Class participation</td><td>10%</td></tr>
+  </table>
+  <p style="font-size:.9rem;color:var(--ink-soft)">
+    1.0 cu. No late submissions without prior approval. Each unexcused absence deducts 5%
+    from the final grade &mdash; contact Joe in advance if you need to miss a class.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Bring a laptop to every class.</strong> The weekly coding exercise runs in Google
+      Colab &mdash; click the link on the schedule below and it works, with nothing to install.
+      If you would rather work locally, the course repository includes a
+      <code>requirements.txt</code>.
+    </p>
+  </div>
+
+  <h3 id="journal-club">Journal club</h3>
+  <p>
+    From Week 3 onward we spend roughly 25 minutes on one paper per week. A <strong>pair</strong>
+    of students presents each paper &mdash; one covers background and methods, the other results
+    and critique, and both lead the discussion. With eleven papers, everyone presents once.
+    Presenters must also run the paper past an LLM chatbot and report which of its criticisms
+    hold up and which are wrong.
+  </p>
+
+  <h3 id="final-project">Final project</h3>
+  <p>
+    A research project (doctoral students) or an implementation project (master's and
+    professional students), addressing a biomedical problem of your choice. Deductive inference
+    must be central &mdash; a project built primarily on machine learning is not acceptable.
+    Both paths produce an 8&ndash;10 page report typeset in the AAAI LaTeX template, plus a
+    10-minute recorded presentation. Full specification in the
+    <a href="LINK::final-project-instructions">final project instructions</a>.
+  </p>
+
+  <h3 id="ai-policy">Generative AI policy</h3>
+  <p>
+    Although this is a course on AI, all graded work &mdash; the four homework assignments and
+    the final project &mdash; must be completed without generative AI assistance. Violations are
+    treated as plagiarism under Penn's
+    <a href="https://catalog.upenn.edu/pennbook/code-of-academic-integrity">Code of Academic
+    Integrity</a>. Two exceptions: the LLM-driven critique in journal club, where its use is
+    required, and the ungraded in-class exercises.
+  </p>
+
+  <h3 id="accommodations">Disability accommodations</h3>
+  <p>
+    Penn provides reasonable accommodations to students with disabilities approved by
+    <a href="https://www.vpul.upenn.edu/lrc/sds/">Student Disabilities Services</a>. Please make
+    an appointment with Joe as early as possible to discuss your accommodations. SDS services
+    are free and confidential; appointments can be made at (215) 573-9235.
+  </p>
+
+  <h3 id="office-hours">Office hours</h3>
+  <p>
+    To be scheduled by poll in the first week of the semester. One-on-one meetings with the
+    course director or TA can be arranged as needed.
+  </p>
+</section>
+
+<!-- ==================================================================
+     RESOURCES
+     ================================================================== -->
+<section id="resources">
+  <h2>Resources</h2>
+
+  <p>
+    Documents are hosted on Penn Box and require PennKey sign-in. Canvas is used only for
+    submitting assignments and viewing grades.
+  </p>
+
+  <div class="res-group">
+    <h3 id="documents">Course documents</h3>
+      <ul>
+        <li>
+          <a href="LINK::syllabus-pdf">Syllabus (PDF)</a>
+          <span class="note">The authoritative version. Everything on this page, in full.</span>
+        </li>
+        <li>
+          <a href="LINK::setup-guide">Software setup</a>
+          <span class="note">Colab, and the optional local Python environment.</span>
+        </li>
+        <li>
+          <a href="LINK::canvas">Canvas course site</a>
+          <span class="note">Assignment submission and grades only.</span>
+        </li>
+        <li>
+          <a href="https://github.com/LINK::github-repo">Course repository on GitHub</a>
+          <span class="note">All thirteen in-class notebooks, with Colab links.</span>
+        </li>
+      </ul>
+    </div>
+
+  <div class="res-group">
+    <h3 id="assignments">Homework</h3>
+      <ul>
+        <li>
+          <a href="LINK::hw1">Homework 1 &mdash; Logic</a>
+          <span class="note">Jupyter notebook. Due Sep 17.</span>
+        </li>
+        <li>
+          <a href="LINK::hw2">Homework 2 &mdash; Semantic networks &amp; search</a>
+          <span class="note">Jupyter notebook. Due Oct 8.</span>
+        </li>
+        <li>
+          <a href="LINK::hw3">Homework 3 &mdash; Expert system in CLIPS</a>
+          <span class="note">HIV trial enrollment. Submit the .clp file. Due Nov 5.</span>
+        </li>
+        <li>
+          <a href="LINK::hw4">Homework 4 &mdash; Bayesian networks</a>
+          <span class="note">Jupyter notebook, uses pgmpy. Due Nov 19.</span>
+        </li>
+      </ul>
+    </div>
+
+  <div class="res-group">
+    <h3 id="project-files">Final project files</h3>
+      <ul>
+        <li>
+          <a href="LINK::final-project-instructions">Project instructions</a>
+          <span class="note">Both project types, report sections, grading.</span>
+        </li>
+        <li>
+          <a href="https://www.overleaf.com/latex/templates/aaai-press-latex-template/jymjdgdpdmxp">AAAI LaTeX template</a>
+          <span class="note">On Overleaf &mdash; choose "Open as Template".</span>
+        </li>
+        <li>
+          <a href="LINK::project-video-upload">Presentation video upload</a>
+          <span class="note">Name the file bmin5200_presentation_[PENNKEY].mp4</span>
+        </li>
+      </ul>
+    </div>
+
+  <div class="res-group">
+    <h3 id="references">Reference material</h3>
+      <ul>
+        <li>
+          <a href="LINK::clips-reference">CLIPS and clipspy examples</a>
+          <span class="note">The .clp files worked through in Week 7.</span>
+        </li>
+        <li>
+          <a href="LINK::papers-archive">All journal club papers</a>
+          <span class="note">Single archive of the semester's PDFs.</span>
+        </li>
+        <li>
+          Cawsey A. <em>The Essence of Artificial Intelligence.</em> Pearson, 2nd ed., 2010.
+          <span class="note">Recommended, not required.</span>
+        </li>
+        <li>
+          Russell S &amp; Norvig P. <em>Artificial Intelligence: A Modern Approach.</em>
+          Pearson, 4th ed., 2020.
+          <span class="note">Recommended, not required.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================================================================
+     COURSE SCHEDULE
+
+     Each meeting is one <tr>. To add or change a week, copy a row and
+     edit the four cells. Link cells hold up to four links in this order:
+       Slides · Notebook (Colab) · Paper · Homework
+     Omit any that do not apply.
+     ================================================================== -->
+<section id="schedule">
+  <h2>Schedule</h2>
+
+  <p>
+    Thirteen meetings. Lecture slides and journal club papers are on Box (PennKey required);
+    the in-class notebooks open directly in Colab.
+  </p>
+
+  <div class="table-scroll">
+  <table class="schedule">
+    <thead>
+      <tr>
+        <th class="wk">#</th>
+        <th class="date">Date</th>
+        <th class="topic">Topic</th>
+        <th class="links">Materials</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="wk">1</td>
+        <td class="date">Aug 27</td>
+        <td class="topic">Course introduction; history of AI</td>
+        <td class="links">
+          <a href="LINK::slides-week01">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week01.ipynb">Notebook: ELIZA</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="wk">2</td>
+        <td class="date">Sep 3</td>
+        <td class="topic">Knowledge representation &amp; logic</td>
+        <td class="links">
+          <a href="LINK::slides-week02">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week02.ipynb">Notebook: model checker</a>
+          <a href="LINK::hw1">HW 1 assigned</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="wk">3</td>
+        <td class="date">Sep 10</td>
+        <td class="topic">
+          Semantic networks, frames, ontologies
+          <span class="jc">Journal club: Babalou et al.</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week03">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week03.ipynb">Notebook: ontology walk</a>
+          <a href="LINK::paper-week03">Paper</a>
+        </td>
+      </tr>
+
+      <tr class="due">
+        <td class="wk">4</td>
+        <td class="date">Sep 17</td>
+        <td class="topic">
+          Heuristic, local &amp; population-based search
+          <span class="jc">Journal club: Wolpert &amp; Macready (1997)</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week04">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week04.ipynb">Notebook: A*</a>
+          <a href="LINK::paper-week04">Paper</a>
+          <a href="LINK::hw1">HW 1 due</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="wk">5</td>
+        <td class="date">Sep 24</td>
+        <td class="topic">
+          Biologically-inspired search
+          <span class="jc">Journal club: Nagarajan &amp; Babu</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week05">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week05.ipynb">Notebook: GA &amp; PSO</a>
+          <a href="LINK::paper-week05">Paper</a>
+          <a href="LINK::hw2">HW 2 assigned</a>
+        </td>
+      </tr>
+
+      <tr class="off">
+        <td class="wk">&mdash;</td>
+        <td class="date">Oct 1</td>
+        <td class="topic">No class &mdash; Fall Break</td>
+        <td class="links"></td>
+      </tr>
+
+      <tr class="due">
+        <td class="wk">6</td>
+        <td class="date">Oct 8</td>
+        <td class="topic">
+          Rules &amp; knowledge-based systems
+          <span class="jc">Journal club: Shortliffe et al. (1973)</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week06">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week06.ipynb">Notebook: chaining engine</a>
+          <a href="LINK::paper-week06">Paper</a>
+          <a href="LINK::hw2">HW 2 due</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="wk">7</td>
+        <td class="date">Oct 15</td>
+        <td class="topic">
+          Building an expert system: CLIPS / clipspy
+          <span class="jc">Journal club: Michalowski et al.</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week07">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week07.ipynb">Notebook: CLIPS</a>
+          <a href="LINK::paper-week07">Paper</a>
+          <a href="LINK::hw3">HW 3 assigned</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="wk">8</td>
+        <td class="date">Oct 22</td>
+        <td class="topic">
+          Bayesian networks; state machines
+          <span class="jc">Journal club: Leclerc et al.</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week08">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week08.ipynb">Notebook: Bayes nets</a>
+          <a href="LINK::paper-week08">Paper</a>
+          <a href="LINK::hw4">HW 4 assigned</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="wk">9</td>
+        <td class="date">Oct 29</td>
+        <td class="topic">
+          Information theory &amp; machine learning
+          <span class="jc">Journal club: Shen et al.</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week09">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week09.ipynb">Notebook: entropy &amp; trees</a>
+          <a href="LINK::paper-week09">Paper</a>
+        </td>
+      </tr>
+
+      <tr class="due">
+        <td class="wk">10</td>
+        <td class="date">Nov 5</td>
+        <td class="topic">
+          Deep learning &amp; large language models
+          <span class="jc">Journal club: Vaswani et al. (2017)</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week10">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week10.ipynb">Notebook: tokens &amp; attention</a>
+          <a href="LINK::paper-week10">Paper</a>
+          <a href="LINK::hw3">HW 3 due</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="wk">11</td>
+        <td class="date">Nov 12</td>
+        <td class="topic">
+          Explainable AI
+          <span class="jc">Journal club: Behrad et al.</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week11">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week11.ipynb">Notebook: SHAP &amp; LIME</a>
+          <a href="LINK::paper-week11">Paper</a>
+        </td>
+      </tr>
+
+      <tr class="due">
+        <td class="wk">12</td>
+        <td class="date">Nov 19</td>
+        <td class="topic">
+          Bias &amp; fairness in AI
+          <span class="jc">Journal club: Pfohl et al.</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week12">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week12.ipynb">Notebook: fairness audit</a>
+          <a href="LINK::paper-week12">Paper</a>
+          <a href="LINK::hw4">HW 4 due</a>
+        </td>
+      </tr>
+
+      <tr class="off">
+        <td class="wk">&mdash;</td>
+        <td class="date">Nov 26</td>
+        <td class="topic">No class &mdash; Thanksgiving</td>
+        <td class="links"></td>
+      </tr>
+
+      <tr>
+        <td class="wk">13</td>
+        <td class="date">Dec 3</td>
+        <td class="topic">
+          Agentic AI
+          <span class="jc">Journal club: Thirunavukarasu et al.</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week13">Slides</a>
+          <a href="https://colab.research.google.com/github/LINK::github-repo/blob/main/exercises/week13.ipynb">Notebook: clinical agent</a>
+          <a href="LINK::paper-week13">Paper</a>
+        </td>
+      </tr>
+
+      <tr class="due">
+        <td class="wk">&mdash;</td>
+        <td class="date">Dec 11</td>
+        <td class="topic">Final project due</td>
+        <td class="links">
+          <a href="LINK::final-project-instructions">Instructions</a>
+          <a href="LINK::project-video-upload">Video upload</a>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+</section>
+
+</main>
+</div><!-- /.layout -->
+
+<footer>
+  <p>
+    BMIN 5200-001, Fall 2026 &middot; Department of Biostatistics, Epidemiology and Informatics,
+    Perelman School of Medicine, University of Pennsylvania.<br>
+    Questions about the course go to
+    <a href="mailto:joseph.romano@pennmedicine.upenn.edu">Joe</a>. Corrections to this page can
+    be filed as an issue on <a href="https://github.com/LINK::github-repo">GitHub</a>.
+  </p>
+</footer>
+
+</div>
+</body>
+</html>

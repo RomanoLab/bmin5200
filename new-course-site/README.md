@@ -1,0 +1,128 @@
+# Course site
+
+One hand-written HTML file. No build system, no dependencies, no framework. Open
+`index.html` in a browser and it works.
+
+## Publishing
+
+The site is live at **https://bmin5200.jdr.bio**, on GitHub Pages.
+
+Publishing is automatic. `.github/workflows/pages.yml` runs on every push to `main`: it runs
+`tools/apply_links.py` to resolve the `LINK::` placeholders, then publishes
+`build/new-course-site/`. To change anything — a link, a schedule row, a heading — edit the
+source, push, and the site updates in about a minute. Watch the **Actions** tab if it doesn't.
+
+`build/` is generated, never committed. It is in `.gitignore`. Do not edit anything inside it;
+the next build deletes the whole directory and writes it again.
+
+Two files in this directory exist only for the deploy and are not part of the page:
+
+- **`CNAME`** — contains `bmin5200.jdr.bio`. This is what binds the custom domain. GitHub reads
+  it from the *published* tree, which is why it is listed in `PASSTHROUGH` in `apply_links.py`.
+  If it ever stops being copied into `build/new-course-site/`, GitHub drops the custom domain on
+  the next deploy and the site reverts to `romanolab.github.io/bmin5200`.
+- **`.nojekyll`** — stops GitHub running the published files through Jekyll, which would
+  otherwise ignore anything starting with an underscore.
+
+### The DNS side
+
+The repo is owned by the **RomanoLab** organization. `bmin5200` is a CNAME record pointing at
+`romanolab.github.io.`, managed in **Netlify DNS** (`jdr.bio` uses Netlify's nameservers,
+`dns1–4.p01.nsone.net`). The apex `jdr.bio` is a separate Netlify-hosted site and is not
+affected by anything in this repo.
+
+`romanolab.github.io` itself returns 404 — that is expected and fine. There is no organization
+Pages site; the CNAME target only routes the request to GitHub's Pages infrastructure, which
+then matches it to this repo by the `CNAME` file above.
+
+**Domain verification belongs to the org, not to a personal account.** Verifying a domain
+protects it *and its immediate subdomains* from other GitHub accounts — and verifying a domain
+already in use elsewhere immediately releases it from that account's Pages sites. So if
+`jdr.bio` is ever verified, verify it under **RomanoLab**. Verifying it under `jdromano2`
+would knock this site offline.
+
+## Editing
+
+### The schedule
+
+Every class meeting is one `<tr>` in the table at the bottom of `index.html`. To change a week,
+edit the four cells. To add one, copy an existing row.
+
+Rows have three shapes:
+
+- normal — a regular meeting
+- `class="off"` — no class (Fall Break, Thanksgiving); greyed and italicized
+- `class="due"` — a meeting where something is due; the links cell is bolded
+
+The links cell holds up to four links, in this order: **Slides · Notebook · Paper · Homework**.
+Leave out any that don't apply.
+
+### The sidebar nav
+
+The nav on the left is a plain nested `<ul>` of `#anchor` links, hard-coded near the top of
+`<body>`. Every `<h2>` and `<h3>` in the content column carries an `id`; the nav points at those
+ids. If you rename or add a heading, add or change its `id` and the matching nav entry — nothing
+generates the list. Below 60rem the sidebar drops to a row of top-level links above the content
+and the sub-entries are hidden.
+
+There is no scroll-spy highlight of the current section, because that needs JavaScript and this
+page has none.
+
+### One column
+
+The content column is single-column on purpose — no side-by-side text blocks, at any width. The
+old `.cols` grid is gone. If you add a section, add it as ordinary stacked content inside
+`<main>`.
+
+### Links
+
+Do not paste Box URLs into the HTML. Every link is written as a placeholder — `LINK::` followed
+by a key — and the real URLs live in `links.tsv` at the repo root. There are around 40 of them,
+and a Box URL changes whenever a file is re-uploaded, so keeping them in one table saves a lot
+of hunting.
+
+To see what is still missing:
+
+```bash
+python3 tools/apply_links.py --check
+```
+
+It prints every unfilled key and the file it appears in. `--strict` makes it exit non-zero,
+which is useful if you ever wire this into CI.
+
+One key is not a URL: `github-repo` is just `owner/repo`, because it gets substituted into both
+`github.com/...` and the Colab notebook links.
+
+### Styling
+
+All CSS is in a single `<style>` block at the top, driven by a handful of custom properties at
+the very start. Change `--accent` to recolor the whole page.
+
+The page is light-only: dark text on a light background in every browser, no matter what the
+reader's OS theme is set to. There is one palette, so a color change happens in one place.
+`color-scheme: light` on `:root` keeps scrollbars and form controls light to match. If you ever
+want the OS theme respected again, add a `@media (prefers-color-scheme: dark)` block overriding
+the same custom properties and drop the `color-scheme` line.
+
+## Next year
+
+Four things change:
+
+1. **Dates.** Every `<td class="date">`, plus the header and the two Fall Break / Thanksgiving
+   rows. Check Penn's academic calendar; the break weeks move.
+2. **`links.tsv`.** New Box uploads mean new URLs. Blank the file and refill it.
+3. **Journal club papers.** The `<span class="jc">` line inside each topic cell, and the
+   corresponding `paper-weekNN` keys.
+4. **Homework due dates.** In the Resources section and in the schedule's links cells.
+
+Nothing else should need touching.
+
+## What deliberately is not here
+
+- **No syllabus copy.** The Course Information section carries what students actually look up —
+  format, grading, policies, dates. The authoritative syllabus is a PDF on Box, generated from
+  `syllabus-2026.md` at the repo root. Keeping the full text in two places guarantees they
+  drift apart.
+- **No file hosting.** Slides and papers stay on Box behind PennKey. The papers are copyrighted;
+  they must not be committed to a public repository.
+- **No JavaScript.** Nothing on the page needs it.
