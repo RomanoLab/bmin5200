@@ -1,0 +1,28 @@
+# ---------------------------------------------------------------------------
+# NOT COMMITTED — the Canvas export.
+#
+# 763 MB of copyrighted journal club PDFs, the 2025 lecture decks, assignment
+# archives, and two 228 MB cartridge files. GitHub rejects any file over 100 MB
+# outright, and this repo is PUBLIC (it has to be, for the Colab links to work).
+# The papers are publisher-copyrighted and must not be redistributed.
+#
+# Keep old-canvas/ in the Box folder. It is source material, not a deliverable.
+# Once something is pushed, it lives in git history forever — removing it later
+# means rewriting history, so the guard belongs here, before the first commit.
+# ---------------------------------------------------------------------------
+old-canvas/
+
+# apply_links.py regenerates this on every run; the Actions workflow builds it
+# at deploy time. Never commit it.
+build/
+
+# macOS / Box
+.DS_Store
+Icon?
+.Spotlight-V100
+.TemporaryItems
+
+# Python
+__pycache__/
+*.pyc
+.venv/
