@@ -58,3 +58,25 @@ paper-week10	# Vaswani et al. (2017)
 paper-week11	# Behrad et al.
 paper-week12	# Pfohl et al.
 paper-week13	# Thirunavukarasu et al.
+
+# In-class notebooks (Colab).
+#
+# The URLs below are already correct. Each line is commented out, so the
+# notebook shows on the site as greyed "(TBA)" and is not clickable.
+# To release a week's notebook to students: delete the leading '#' on that
+# line, commit, push. That is the whole action - one character.
+#
+# To hide one again, put the '#' back.
+#notebook-week01	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week01.ipynb
+#notebook-week02	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week02.ipynb
+#notebook-week03	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week03.ipynb
+#notebook-week04	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week04.ipynb
+#notebook-week05	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week05.ipynb
+#notebook-week06	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week06.ipynb
+#notebook-week07	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week07.ipynb
+#notebook-week08	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week08.ipynb
+#notebook-week09	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week09.ipynb
+#notebook-week10	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week10.ipynb
+#notebook-week11	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week11.ipynb
+#notebook-week12	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week12.ipynb
+#notebook-week13	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week13.ipynb

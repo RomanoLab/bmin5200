@@ -88,6 +88,13 @@ greyed with a "(TBA)" suffix and no click target. So the schedule stays complete
 semester, and nothing ever ships as a link that 404s. Fill the key in `links.tsv`, push, and that
 entry becomes a live link on the next deploy — this is the intended week-by-week workflow.
 
+### Releasing a notebook
+
+The 13 in-class notebooks are a special case: they live in this repo, so there is no upload to
+wait for. Their Colab URLs are already written into `links.tsv`, but **commented out**, which
+leaves them greyed as "(TBA)" like everything else. To release one week's notebook, delete the
+leading `#` on its `notebook-weekNN` line, commit, and push. To pull it back, restore the `#`.
+
 To see what is still missing:
 
 ```bash

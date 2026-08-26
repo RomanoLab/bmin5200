@@ -38,6 +38,12 @@ significantly altered. The refactor changed structure, not subject matter.
 copyrighted journal club PDFs, the 2025 decks, and two 228 MB cartridge files. This repo is
 public — it has to be, or the Colab links break. Papers and slides live on Box behind PennKey.
 
+**The Colab notebooks are released one week at a time, on purpose.** All 13 exist in
+`exercises/` and their URLs are pre-written in `links.tsv` but commented out, so they render
+greyed as "(TBA)". Joe uncomments one line per week. Do not "fix" this by uncommenting them all
+or by rebuilding the Colab URL inline in `index.html` — the placeholder indirection is what
+makes the gating possible.
+
 **Unposted material renders as inert greyed "(TBA)" text, never as a broken link.**
 `apply_links.py` rewrites any anchor still holding a `LINK::` placeholder into
 `<span class="tba">`. Joe fills keys in week by week as he uploads to Box. Do not "fix" this by
