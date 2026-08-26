@@ -33,6 +33,30 @@ from pathlib import Path
 
 TOKEN = re.compile(r"LINK::([A-Za-z0-9][A-Za-z0-9._-]*)")
 
+# An <a> whose href still holds an unresolved placeholder. Matched after
+# substitution, so anything left here has no URL in links.tsv yet.
+DEAD_ANCHOR = re.compile(
+    r'<a\s[^>]*href="[^"]*LINK::[^"]*"[^>]*>(?P<label>.*?)</a>',
+    re.DOTALL,
+)
+
+
+def deactivate_dead_links(text: str, suffix: str) -> tuple[str, int]:
+    """Turn links to unposted material into inert text.
+
+    A placeholder left in an href would render as an ordinary link that 404s
+    when a student clicks it, which is worse than showing nothing. In HTML the
+    anchor becomes <span class="tba">, styled grey and unclickable by the
+    stylesheet. In notebooks there is no styling to lean on, so the token is
+    replaced with a plain marker.
+    """
+    if suffix == ".html":
+        return DEAD_ANCHOR.subn(
+            lambda m: f'<span class="tba">{m.group("label")}</span>', text)
+    if suffix == ".ipynb":
+        return TOKEN.subn("(not yet posted)", text)
+    return text, 0
+
 # Files the script rewrites, relative to the repo root.
 TARGETS = [
     "new-course-site/index.html",
@@ -115,6 +139,7 @@ def main() -> int:
     used: set[str] = set()
     missing: dict[str, list[str]] = {}
     written = 0
+    deactivated = 0
 
     if not args.check:
         if outdir.exists():
@@ -132,6 +157,10 @@ def main() -> int:
 
         for leftover in sorted(set(TOKEN.findall(text))):
             missing.setdefault(leftover, []).append(str(path.relative_to(root)))
+
+        # Unposted material must never ship as a clickable link that 404s.
+        text, killed = deactivate_dead_links(text, path.suffix)
+        deactivated += killed
 
         if not args.check:
             dest = outdir / path.relative_to(root)
@@ -155,6 +184,9 @@ def main() -> int:
           f"({total_keys} total)")
     if not args.check:
         print(f"wrote         : {written} files -> {outdir.relative_to(root)}/")
+    if deactivated:
+        print(f"deactivated   : {deactivated} link(s) to unposted material "
+              f"(shown greyed as TBA, not clickable)")
 
     unused = sorted(set(links) - used)
     if unused:

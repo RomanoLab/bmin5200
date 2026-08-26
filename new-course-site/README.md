@@ -17,10 +17,11 @@ the next build deletes the whole directory and writes it again.
 
 Two files in this directory exist only for the deploy and are not part of the page:
 
-- **`CNAME`** — contains `bmin5200.jdr.bio`. This is what binds the custom domain. GitHub reads
-  it from the *published* tree, which is why it is listed in `PASSTHROUGH` in `apply_links.py`.
-  If it ever stops being copied into `build/new-course-site/`, GitHub drops the custom domain on
-  the next deploy and the site reverts to `romanolab.github.io/bmin5200`.
+- **`CNAME`** — contains `bmin5200.jdr.bio`. Note that this file does **not** bind the domain in
+  the current setup: GitHub ignores a `CNAME` file when publishing from a custom Actions
+  workflow, and reads one only when publishing from a branch. The live domain is set under
+  Settings -> Pages -> Custom domain. The file is kept as documentation and as a fallback for
+  branch publishing, and `PASSTHROUGH` in `apply_links.py` copies it into `build/`.
 - **`.nojekyll`** — stops GitHub running the published files through Jekyll, which would
   otherwise ignore anything starting with an underscore.
 
@@ -80,6 +81,12 @@ Do not paste Box URLs into the HTML. Every link is written as a placeholder — 
 by a key — and the real URLs live in `links.tsv` at the repo root. There are around 40 of them,
 and a Box URL changes whenever a file is re-uploaded, so keeping them in one table saves a lot
 of hunting.
+
+Until a key has a URL, its link is **not rendered as a link**. `apply_links.py` rewrites any
+anchor whose href still holds a placeholder into `<span class="tba">`, which the stylesheet shows
+greyed with a "(TBA)" suffix and no click target. So the schedule stays complete and readable all
+semester, and nothing ever ships as a link that 404s. Fill the key in `links.tsv`, push, and that
+entry becomes a live link on the next deploy — this is the intended week-by-week workflow.
 
 To see what is still missing:
 

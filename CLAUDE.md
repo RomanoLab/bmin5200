@@ -38,6 +38,11 @@ significantly altered. The refactor changed structure, not subject matter.
 copyrighted journal club PDFs, the 2025 decks, and two 228 MB cartridge files. This repo is
 public — it has to be, or the Colab links break. Papers and slides live on Box behind PennKey.
 
+**Unposted material renders as inert greyed "(TBA)" text, never as a broken link.**
+`apply_links.py` rewrites any anchor still holding a `LINK::` placeholder into
+`<span class="tba">`. Joe fills keys in week by week as he uploads to Box. Do not "fix" this by
+pointing unfilled links at a placeholder URL or removing the rows.
+
 **`links.tsv` is the only place Box URLs go.** The site and notebooks use `LINK::key`
 placeholders; `tools/apply_links.py` resolves them into `build/`. Never paste a Box URL into
 `index.html`. Box URLs change whenever a file is re-uploaded, which is the whole point.
@@ -46,9 +51,12 @@ placeholders; `tools/apply_links.py` resolves them into `build/`. Never paste a 
 Editing anything inside it is throwing work away. It is gitignored; the Actions workflow builds
 it at deploy time.
 
-**`new-course-site/CNAME` is load-bearing.** It binds the custom domain, and it only survives
-into `build/` because it is listed in `PASSTHROUGH` in `apply_links.py`. If it stops being
-copied, GitHub drops the custom domain on the next deploy.
+**The custom domain lives in repo Settings, not in the `CNAME` file.** When publishing from a
+custom Actions workflow, GitHub ignores any `CNAME` file in the artifact — it only reads one
+when publishing from a branch. `new-course-site/CNAME` is kept as documentation and as a
+fallback if this ever moves back to branch publishing, and `PASSTHROUGH` in `apply_links.py`
+carries it into `build/`. Do not rely on it to bind the domain: that is set under
+Settings -> Pages -> Custom domain.
 
 **Domain verification belongs to RomanoLab.** Verifying a domain protects it and its immediate
 subdomains from other GitHub accounts, and verifying a domain already in use elsewhere

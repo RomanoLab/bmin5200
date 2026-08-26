@@ -16,6 +16,10 @@ old-canvas/
 # at deploy time. Never commit it.
 build/
 
+# Scratch dir for files this environment cannot delete directly.
+# Safe to remove at any time: rm -rf _to_delete
+_to_delete/
+
 # macOS / Box
 .DS_Store
 Icon?

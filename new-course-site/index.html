@@ -115,6 +115,14 @@
   a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
   a:hover { text-decoration-thickness: 2px; }
 
+  /* Material that has not been posted yet.
+     apply_links.py rewrites any <a> whose href still holds an unresolved
+     LINK:: placeholder into <span class="tba">, so the label stays visible in
+     the schedule but is inert until the URL is added to links.tsv. Nothing on
+     the page should ever ship as a clickable link that 404s. */
+  .tba { color: var(--off); cursor: default; }
+  .tba::after { content: " (TBA)"; font-size: .85em; letter-spacing: .02em; }
+
   /* ---------- header ---------- */
 
   header {
@@ -222,7 +230,8 @@
   table.schedule td.topic .jc {
     display: block; font-weight: 400; font-size: .85rem; color: var(--ink-soft); margin-top: .2rem;
   }
-  table.schedule td.links a { display: inline-block; margin: 0 .9rem .2rem 0; white-space: nowrap; }
+  table.schedule td.links a,
+  table.schedule td.links .tba { display: inline-block; margin: 0 .9rem .2rem 0; white-space: nowrap; }
   table.schedule tr.off td { color: var(--off); font-style: italic; }
   table.schedule tr.off td.topic { font-weight: 400; }
   table.schedule tr.due td.links { font-weight: 600; }
