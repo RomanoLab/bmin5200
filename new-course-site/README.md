@@ -53,10 +53,16 @@ Rows have three shapes:
 
 - normal — a regular meeting
 - `class="off"` — no class (Fall Break, Thanksgiving); greyed and italicized
-- `class="due"` — a meeting where something is due; the links cell is bolded
+- `class="due"` — a meeting where something is due (kept as a semantic marker)
 
 The links cell holds up to four links, in this order: **Slides · Notebook · Paper · Homework**.
 Leave out any that don't apply.
+
+Bold marks a deadline, and only the deadline. Put `class="due-item"` on the link itself — the
+`HW N due` entries have it — not on the row. An earlier version bolded the whole links cell of a
+`tr.due` row, which emphasised that week's slides and paper too and left the bold pointing at
+nothing in particular. The emphasis survives the TBA rewrite, so a deadline still reads as a
+deadline before its file is posted.
 
 ### The sidebar nav
 

@@ -234,7 +234,10 @@
   table.schedule td.links .tba { display: inline-block; margin: 0 .9rem .2rem 0; white-space: nowrap; }
   table.schedule tr.off td { color: var(--off); font-style: italic; }
   table.schedule tr.off td.topic { font-weight: 400; }
-  table.schedule tr.due td.links { font-weight: 600; }
+  /* Bold marks a deadline, and only the deadline. This used to bold the whole
+     links cell of a tr.due row, which also emphasised that week's slides,
+     notebook and paper -- so the bold stopped pointing at anything. */
+  table.schedule td.links .due-item { font-weight: 700; }
 
   footer {
     border-top: 1px solid var(--rule);
@@ -579,7 +582,7 @@
           <a href="LINK::slides-week04">Slides</a>
           <a href="LINK::notebook-week04">Notebook: A*</a>
           <a href="LINK::paper-week04">Paper</a>
-          <a href="LINK::hw1">HW 1 due</a>
+          <a class="due-item" href="LINK::hw1">HW 1 due</a>
         </td>
       </tr>
 
@@ -616,7 +619,7 @@
           <a href="LINK::slides-week06">Slides</a>
           <a href="LINK::notebook-week06">Notebook: chaining engine</a>
           <a href="LINK::paper-week06">Paper</a>
-          <a href="LINK::hw2">HW 2 due</a>
+          <a class="due-item" href="LINK::hw2">HW 2 due</a>
         </td>
       </tr>
 
@@ -675,7 +678,7 @@
           <a href="LINK::slides-week10">Slides</a>
           <a href="LINK::notebook-week10">Notebook: tokens &amp; attention</a>
           <a href="LINK::paper-week10">Paper</a>
-          <a href="LINK::hw3">HW 3 due</a>
+          <a class="due-item" href="LINK::hw3">HW 3 due</a>
         </td>
       </tr>
 
@@ -704,7 +707,7 @@
           <a href="LINK::slides-week12">Slides</a>
           <a href="LINK::notebook-week12">Notebook: fairness audit</a>
           <a href="LINK::paper-week12">Paper</a>
-          <a href="LINK::hw4">HW 4 due</a>
+          <a class="due-item" href="LINK::hw4">HW 4 due</a>
         </td>
       </tr>
 

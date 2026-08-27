@@ -36,9 +36,19 @@ TOKEN = re.compile(r"LINK::([A-Za-z0-9][A-Za-z0-9._-]*)")
 # An <a> whose href still holds an unresolved placeholder. Matched after
 # substitution, so anything left here has no URL in links.tsv yet.
 DEAD_ANCHOR = re.compile(
-    r'<a\s[^>]*href="[^"]*LINK::[^"]*"[^>]*>(?P<label>.*?)</a>',
+    r'<a\s(?P<attrs>[^>]*href="[^"]*LINK::[^"]*"[^>]*)>(?P<label>.*?)</a>',
     re.DOTALL,
 )
+
+
+def _inert_span(m: "re.Match") -> str:
+    """Replace a dead link with inert text, preserving deadline emphasis.
+
+    A deadline is still a deadline even when the file has not been posted, so
+    due-item survives the rewrite; the item shows as bold grey "HW 1 due (TBA)".
+    """
+    classes = "tba due-item" if "due-item" in m.group("attrs") else "tba"
+    return f'<span class="{classes}">{m.group("label")}</span>'
 
 
 def deactivate_dead_links(text: str, suffix: str) -> tuple[str, int]:
@@ -51,8 +61,7 @@ def deactivate_dead_links(text: str, suffix: str) -> tuple[str, int]:
     replaced with a plain marker.
     """
     if suffix == ".html":
-        return DEAD_ANCHOR.subn(
-            lambda m: f'<span class="tba">{m.group("label")}</span>', text)
+        return DEAD_ANCHOR.subn(_inert_span, text)
     if suffix == ".ipynb":
         return TOKEN.subn("(not yet posted)", text)
     return text, 0
