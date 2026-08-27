@@ -1,6 +1,6 @@
 # BMIN 5200 — link table
 #
-# Two tab-separated columns: key<TAB>url
+# Two columns: key, then the URL. Tab or spaces both work.
 # Paste the real URL after the tab. Leave a row alone to keep it unfilled;
 # apply_links.py will report exactly what is still missing.
 #
@@ -32,7 +32,7 @@ hw3
 hw4
 
 # Lecture slides, one per meeting
-slides-week01   https://upenn.box.com/s/zsuz3zodbuz6ay1jdjuvcietg5g0qvs9
+slides-week01	https://upenn.box.com/s/zsuz3zodbuz6ay1jdjuvcietg5g0qvs9
 slides-week02
 slides-week03
 slides-week04

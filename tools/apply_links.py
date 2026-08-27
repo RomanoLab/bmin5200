@@ -81,7 +81,10 @@ def repo_root() -> Path:
 
 
 def load_links(path: Path) -> dict[str, str]:
-    """Read links.tsv. Two tab-separated columns: key, url. # starts a comment."""
+    """Read links.tsv. Two whitespace-separated columns: key, url.
+
+    Tab is the convention, but any spacing works. # starts a comment.
+    """
     if not path.is_file():
         sys.exit(f"error: {path} not found. Copy links.tsv.example and fill it in.")
 
@@ -90,7 +93,11 @@ def load_links(path: Path) -> dict[str, str]:
         line = raw.split("#", 1)[0].rstrip()
         if not line.strip():
             continue
-        parts = [p.strip() for p in line.split("\t") if p.strip()]
+        # Split on ANY run of whitespace, not just a tab. Neither a key nor a
+        # URL can contain whitespace, so this is unambiguous -- and an editor
+        # that silently converts tabs to spaces used to make the key look
+        # unfilled with no error at all.
+        parts = line.split()
         if len(parts) == 1:
             continue  # key present, URL still blank
         if len(parts) != 2:
