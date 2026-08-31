@@ -9,63 +9,99 @@ The reclaimed time goes to the in-class coding exercise. The reasoning: students
 two papers a week and writing no code, in a course whose syllabus promises that all programming
 would be done in Python. One paper read properly beats two skimmed.
 
-Two knock-on changes:
+Three knock-on changes:
 
-- **Presenters work in pairs.** With ~20 students and 11 slots, two students share each paper —
-  one presents background and methods, the other results and critique, and both field
-  discussion. Everybody presents exactly once.
-- **The second-paper extra credit is retired.** It existed to cover 22 slots with ~20 students.
-  There is nothing left for it to solve.
+- **Each paper covers the _previous_ week's lecture topic.** In 2025 a paper was matched to the
+  week whose lecture it argued with, which meant presenters had to prepare on material they had
+  not yet been taught. Shifting by one week means the lecture always comes first. It also means
+  the Week 13 lecture topic (agentic AI) has no paper, and Weeks 1 and 2 have none because
+  there is no preceding lecture to draw on.
+- **One presenter per paper.** With 11 students and 11 slots, everybody presents exactly once,
+  alone. The 2025 pairing scheme existed to fit ~20 students into 11 slots and is retired.
+- **The second-paper extra credit is retired.** It existed to cover 22 slots. There is nothing
+  left for it to solve.
 
 The LLM-driven critique stays. It remains the one sanctioned use of generative AI in the
 course, and it works better with one paper than two.
 
 ## Papers
 
-Each paper is matched to the week whose lecture it argues with. Every PDF was already in the
-2025 course files; nothing new needs to be sourced.
+No reviews or surveys. Each paper is either a seminal statement of the method or a strong
+example of applying it to a health problem. Six carry direct clinical or biomedical content;
+five are foundational computer science.
 
-| Week | Date | Lecture topic | Paper | Why this one |
+| Wk | Date | Covers (previous week) | Paper | Why this one |
 | --- | --- | --- | --- | --- |
-| 3 | Sep 10 | Semantic networks, frames, ontologies | Babalou et al. | Ontology matching and merging — the problem that appears the moment you have two vocabularies for one domain |
-| 4 | Sep 17 | Heuristic, local & population-based search | Wolpert & Macready (1997) | No Free Lunch. The paper that says your favorite search algorithm has no general claim to being better |
-| 5 | Sep 24 | Biologically-inspired search | Nagarajan & Babu | Evolutionary methods applied to a biomedical optimization problem |
-| 6 | Oct 8 | Rules & knowledge-based systems | Shortliffe et al. (1973) | MYCIN. Still the clearest statement of what a clinical rule base was supposed to do, and why it did not deploy |
-| 7 | Oct 15 | Building an expert system (CLIPS) | Michalowski et al. | A modern clinical decision support system built on explicit rules — the thing they are about to build in Homework 3 |
-| 8 | Oct 22 | Bayesian networks; state machines | Leclerc et al. | Probabilistic graphical models on clinical data |
-| 9 | Oct 29 | Information theory & machine learning | Shen et al. | The transition from deduction to induction, in a biomedical setting |
-| 10 | Nov 5 | Deep learning & LLMs | Vaswani et al. (2017) | Attention Is All You Need. Read the actual paper, not a summary of it |
-| 11 | Nov 12 | Explainable AI | Behrad et al. | Explainability methods surveyed specifically for medical applications |
-| 12 | Nov 19 | Bias & fairness in AI | Pfohl et al. | Fairness in clinical prediction, with the metric trade-offs made concrete |
-| 13 | Dec 3 | Agentic AI | Thirunavukarasu et al. | LLMs in medicine — the closest thing to a sober assessment of what is actually deployable |
+| 3 | Sep 10 | Knowledge representation & logic | McCarthy (1959), *Programs with Common Sense* | The founding argument for representing knowledge as logic a program can reason over. Seven pages; the Advice Taker is the ancestor of everything in Weeks 2–7 |
+| 4 | Sep 17 | Semantic networks, frames, ontologies | Ashburner et al. (2000), *Gene ontology: tool for the unification of biology*, Nat Genet 25(1):25–29 | The most consequential biomedical ontology ever built, described by the people building it |
+| 5 | Sep 24 | Heuristic, local & population-based search | Wolpert & Macready (1997), *No Free Lunch Theorems for Optimization*, IEEE Trans Evol Comput 1(1):67–82 | The result that says your favourite search algorithm has no general claim to being better. Forces the question of what a heuristic is actually buying you |
+| 6 | Oct 8 | Biologically-inspired search | Kennedy & Eberhart (1995), *Particle Swarm Optimization*, ICNN'95:1942–1948 | Origin of PSO, half of the Week 5 notebook. Strikingly informal for a foundational paper — good discussion fodder |
+| 7 | Oct 15 | Rules & knowledge-based systems | Shortliffe et al. (1973), *An artificial intelligence program to advise physicians regarding antimicrobial therapy*, Comput Biomed Res 6(6):544–560 | MYCIN. Still the clearest statement of what a clinical rule base was supposed to do |
+| 8 | Oct 22 | Building an expert system (CLIPS) | Miller, Pople & Myers (1982), *Internist-1*, N Engl J Med 307(8):468–476 | A systematic evaluation of a large knowledge base that concludes it is not clinically reliable, and says exactly why. The honest counterweight to MYCIN, read while they build Homework 3 |
+| 9 | Oct 29 | Bayesian networks; state machines | de Dombal et al. (1972), *Computer-aided diagnosis of acute abdominal pain*, Br Med J 2(5804):9–13 | A controlled prospective trial of Bayesian diagnosis in 304 patients with acute abdominal pain: 91.8% accuracy against 79.6% for the senior clinician on each case. Read after INTERNIST-1 it poses the obvious question — one narrow system worked, one broad one did not, and neither deployed |
+| 10 | Nov 5 | Information theory & machine learning | Quinlan (1986), *Induction of decision trees*, Machine Learning 1:81–106 | Information gain doing actual work — the entropy-and-trees notebook, in its original form |
+| 11 | Nov 12 | Deep learning & large language models | Vaswani et al. (2017), *Attention Is All You Need* | Read the actual paper, not a summary of it |
+| 12 | Nov 19 | Explainable AI | Caruana et al. (2015), *Intelligible Models for HealthCare*, KDD:1721–1730 | The asthma/pneumonia paradox: an accurate model that would have killed people, caught only because it was intelligible |
+| 13 | Dec 3 | Bias & fairness in AI | Obermeyer et al. (2019), *Dissecting racial bias in an algorithm used to manage the health of populations*, Science 366(6464):447–453 | Racial bias in a deployed algorithm affecting millions, traced to a single proxy-variable choice |
 
-> The 2025 PDF for the Week 13 paper is filed as `Thirunakukarasu et all.pdf`; the author is
-> Thirunavukarasu. Worth renaming when the papers move to Box.
+Every citation above was verified against PubMed or the publisher record. Where to obtain each
+PDF is listed in the next section.
 
-## Papers moved out of journal club
+## Obtaining the PDFs
 
-**Newell & Simon (1956)** and **Turing (1950)** are now assigned as short readings for Weeks 1
-and 2 rather than presentations. Both decks already walk through these papers slide by slide
-(the Logic Theorist section in Week 1, the Turing Test section in Week 1), so a presentation
+Only Shortliffe and Vaswani carry over from the 2025 course files; the other nine need sourcing.
+Four are free to anyone. The rest need the Penn subscription — use the library proxy or an
+on-campus connection.
+
+| Wk | Paper | Where | Access |
+| --- | --- | --- | --- |
+| 3 | McCarthy (1959) | http://www-formal.stanford.edu/jmc/mcc59.html | Free |
+| 4 | Ashburner et al. (2000) | https://pmc.ncbi.nlm.nih.gov/articles/PMC3037419/ | Free (PMC) |
+| 5 | Wolpert & Macready (1997) | https://doi.org/10.1109/4235.585893 | IEEE — Penn |
+| 6 | Kennedy & Eberhart (1995) | https://doi.org/10.1109/ICNN.1995.488968 | IEEE — Penn |
+| 7 | Shortliffe et al. (1973) | https://doi.org/10.1016/0010-4809(73)90029-3 | Elsevier — Penn. **Already in the 2025 files** |
+| 8 | Miller, Pople & Myers (1982) | https://doi.org/10.1056/NEJM198208193070803 | NEJM — Penn |
+| 9 | de Dombal et al. (1972) | https://pmc.ncbi.nlm.nih.gov/articles/PMC1789017/ | Free (PMC) |
+| 10 | Quinlan (1986) | https://doi.org/10.1007/BF00116251 | Springer — Penn |
+| 11 | Vaswani et al. (2017) | https://arxiv.org/abs/1706.03762 | Free (arXiv). **Already in the 2025 files** |
+| 12 | Caruana et al. (2015) | https://doi.org/10.1145/2783258.2788613 | ACM DL — Penn |
+| 13 | Obermeyer et al. (2019) | https://doi.org/10.1126/science.aax2342 | Science — Penn |
+
+Upload each to Box, set the share audience to **People in your company**, and paste the link
+into the matching `paper-weekNN` key in `links.tsv`. The keys are unchanged from before — only
+the paper behind each one has changed.
+
+## Papers no longer used
+
+**Newell & Simon (1956)** and **Turing (1950)** remain short readings for Weeks 1 and 2 rather
+than presentations. Both decks already walk through them slide by slide, so a presentation
 largely restates the lecture. As readings they set up the Week 1 ELIZA exercise directly.
 
-**Dropped entirely** (available if you want to swap one back in): Naz et al., Squires et al.,
-Sung & Chi, Rodrigues de Araújo et al., Sadik et al., Shamshad et al., Balagopalan et al.,
-Combi et al., Ladbury et al. Most are second surveys on a topic the paired paper already
-covers.
+**Dropped from the 2025 set.** Babalou et al. and Behrad et al. are surveys and fail the
+no-review rule outright. Nagarajan & Babu, Leclerc et al., Shen et al., Michalowski et al.,
+Pfohl et al. and Thirunavukarasu et al. are displaced by stronger papers on the same topics —
+Pfohl by Obermeyer, Thirunavukarasu by the removal of the agentic-AI slot. Also unused, from
+2025: Naz et al., Squires et al., Sung & Chi, Rodrigues de Araújo et al., Sadik et al.,
+Shamshad et al., Balagopalan et al., Combi et al., Ladbury et al.
+
+Heckerman, Horvitz & Nathwani (1992), *Pathfinder*, was the original Week 9 pick and remains a
+reasonable substitute, as does Shwe et al. (1991), the QMR-DT reformulation of the Week 8 paper's
+knowledge base; both sit behind the same Thieme paywall with no registered DOI.
+
+Michalowski et al. (2020), *MitPlan* — first-order logic applied to conflicting clinical
+practice guidelines — is the strongest of the dropped papers and is the obvious substitute for
+Week 3 if a clinical application is wanted ahead of McCarthy.
 
 ## Format
-
-Unchanged from 2025 except for length and pairing.
 
 **~25 minutes total per week:**
 
 - 12–15 minutes presentation: background, methods, results, the authors' conclusions
 - 3 minutes: the LLM-driven critique (below)
-- 8–10 minutes: discussion questions posed by the presenters, who then lead the discussion
+- 8–10 minutes: discussion questions posed by the presenter, who then leads the discussion
 
-All students are expected to have read the paper and to participate. The subject matter of each
-paper is previewed in class two weeks before the presentation date.
+All students are expected to have read the paper and to participate. Because each paper follows
+the lecture it draws on, presenters prepare on material already covered in class.
 
 ### The LLM-driven critique
 
@@ -86,5 +122,5 @@ The 2025 signup ran as a Canvas quiz where students entered their top five paper
 still works and requires no change — it is a Canvas gradebook artifact, not course content, so
 it stays in Canvas rather than moving to the course site.
 
-Assignments are distributed in the second week of the semester so that the Week 3 presenters
-have two weeks of lead time.
+Assignments are distributed in the second week of the semester so that the Week 3 presenter has
+two weeks of lead time.

@@ -38,6 +38,13 @@ significantly altered. The refactor changed structure, not subject matter.
 copyrighted journal club PDFs, the 2025 decks, and two 228 MB cartridge files. This repo is
 public — it has to be, or the Colab links break. Papers and slides live on Box behind PennKey.
 
+**Journal club papers are deliberately one week behind the lecture they cover.** Week 3's
+paper is on Week 2's topic, and so on through Week 13; Weeks 1 and 2 have none. This is why the
+schedule shows McCarthy (logic) next to the ontologies lecture. It is not a mistake and must not
+be "corrected" by realigning papers to same-week topics -- presenters would then be preparing on
+material they have not been taught. The note above the schedule table explains it to students.
+See `journal-club-2026.md` for the full list and the selection criteria (no reviews or surveys).
+
 **The Colab notebooks are released one week at a time, on purpose.** All 13 exist in
 `exercises/` and their URLs are pre-written in `links.tsv` but commented out, so they render
 greyed as "(TBA)". Joe uncomments one line per week. Do not "fix" this by uncommenting them all
