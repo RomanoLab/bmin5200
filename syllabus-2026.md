@@ -144,7 +144,7 @@ complete the required assignments. This course requires the use of a laptop comp
 
 ## Student evaluation
 
-### Assignments — 50% of final grade
+### Assignments — 40% of final grade
 
 Four graded submissions, weighted equally. Assignments are submitted via Canvas. Since we are on
 a fairly tight schedule, no late submissions will be accepted without prior approval.
@@ -160,16 +160,32 @@ a fairly tight schedule, no late submissions will be accepted without prior appr
 
 Either an AI-based research project (for doctoral students) or a knowledge-based system
 implementation (for master's, professional, and other students), addressing a biomedical
-problem of your choice. Full details below, and discussed in class.
+problem of your choice. Full details below, and discussed in class. The 40% breaks down as:
 
-### Class participation — 10% of final grade
+| Component | Weight | Due |
+| --- | --- | --- |
+| Proposal | 5% | Oct 22, 11:59pm |
+| Implementation and code | 10% | Dec 11, 11:59pm |
+| Written report | 17% | Dec 11, 11:59pm |
+| Recorded presentation | 8% | Dec 11, 11:59pm |
 
-This will be liberally applied — if you show up for class, participate in discussions, engage
-with the coding exercises, and put effort into journal club, you will earn the full 10%.
+### Class participation — 20% of final grade
 
-Students are expected to attend all classes. If you need to miss class for an appropriate
-reason, please contact Joe as soon as possible to let him know. Each unexcused absence will be
-penalized by deducting 5% from your final number grade for the course.
+| Component | Weight |
+| --- | --- |
+| Journal club presentation | 10% |
+| Journal club discussion | 4% |
+| In-class exercises and preparation | 6% |
+
+The journal club presentation is worth as much as one homework assignment, which is roughly
+what it costs to prepare. Discussion credit is for the other ten weeks — everyone reads the
+paper, not only the pair presenting it. In-class exercise credit is for engagement and
+completion, not for correct answers.
+
+Attendance is expected rather than credited. There are no points for showing up, so it is not
+listed above. If you need to miss class for an appropriate reason, please contact Joe as soon as
+possible to let him know. Each unexcused absence will be penalized by deducting 5% from your
+final number grade for the course, separately from the categories above.
 
 ## Journal club
 
@@ -225,6 +241,14 @@ Students conduct a literature search targeting a specific biomedical task or pro
 relevant data, databases, experts, and resources for developing the tool, and complete an
 initial implementation. The tool does not have to be production-ready, but should demonstrate
 the intended functionality. This tool should be implemented in CLIPS (e.g., via clipspy).
+
+### Proposal
+
+A one-page proposal is due **October 22, 2026, 11:59pm**, and is worth 5% of the final grade. It
+states the biomedical problem, where deductive inference enters, the data or resources you plan
+to use, and which of the two project types you are doing. This is how your topic gets cleared
+before you start building. It falls the week after CLIPS is covered in class, so implementation
+students propose a tool having already worked with it.
 
 ### Final report
 
@@ -307,8 +331,9 @@ violations of this policy will be treated similarly to other forms of plagiarism
 
 1. The **LLM-driven critique** portion of each journal club, in which you are expected to use
    the LLM chatbot of your choice to assist in critiquing the article.
-2. The **in-class coding exercises**, which are ungraded. Use whatever tools help you learn
-   there — though you will get more out of them by typing the code yourself.
+2. The **in-class coding exercises**, which earn credit for engagement rather than for correct
+   answers. Use whatever tools help you learn there — though you will get more out of them by
+   typing the code yourself.
 
 The homework assignments and the final project are covered by the policy without exception.
 
@@ -340,7 +365,7 @@ Spruce Street, Suite 300. All SDS services are free and confidential. Please vis
 | — | Oct 1 | *No class — Fall Break* | | |
 | 6 | Oct 8 | Rules & knowledge-based systems | Shortliffe et al. | **HW 2** |
 | 7 | Oct 15 | Building an expert system: CLIPS / clipspy | Michalowski et al. | |
-| 8 | Oct 22 | Bayesian networks; state machines | Leclerc et al. | |
+| 8 | Oct 22 | Bayesian networks; state machines | Leclerc et al. | **Project proposal** |
 | 9 | Oct 29 | Information theory & machine learning | Shen et al. | |
 | 10 | Nov 5 | Deep learning & large language models | Vaswani et al. | **HW 3** |
 | 11 | Nov 12 | Explainable AI | Behrad et al. | |

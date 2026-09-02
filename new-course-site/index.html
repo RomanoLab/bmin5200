@@ -186,9 +186,17 @@
   ul.tight { margin: 0 0 1rem; padding-left: 1.15rem; }
   ul.tight li { margin-bottom: .3rem; }
 
+  /* Grading table. Two row shapes: a category row carrying the weight that
+     counts toward 100%, and indented sub-rows breaking that weight down. The
+     rule sits under the LAST row of each group (class="end"), not under every
+     row, so a category reads as one block instead of four loose lines. */
   table.grading { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
-  table.grading td { padding: .4rem 0; border-bottom: 1px solid var(--rule); }
+  table.grading td { padding: .4rem 0; }
   table.grading td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  table.grading tr.end td { border-bottom: 1px solid var(--rule); }
+  table.grading tr.cat td { font-weight: 600; }
+  table.grading tr.sub td { color: var(--ink-soft); }
+  table.grading tr.sub td:first-child { padding-left: 1.5rem; }
 
   .callout {
     background: var(--accent-bg);
@@ -359,13 +367,24 @@
 
   <h3 id="grading">Grading</h3>
   <table class="grading">
-    <tr><td>Assignments (four, weighted equally)</td><td>50%</td></tr>
-    <tr><td>Final project</td><td>40%</td></tr>
-    <tr><td>Class participation</td><td>10%</td></tr>
+    <tr class="cat end"><td>Assignments (four, weighted equally)</td><td>40%</td></tr>
+
+    <tr class="cat"><td>Final project</td><td>40%</td></tr>
+    <tr class="sub"><td>Proposal</td><td>5%</td></tr>
+    <tr class="sub"><td>Implementation and code</td><td>10%</td></tr>
+    <tr class="sub"><td>Written report</td><td>17%</td></tr>
+    <tr class="sub end"><td>Recorded presentation</td><td>8%</td></tr>
+
+    <tr class="cat"><td>Class participation</td><td>20%</td></tr>
+    <tr class="sub"><td>Journal club presentation</td><td>10%</td></tr>
+    <tr class="sub"><td>Journal club discussion</td><td>4%</td></tr>
+    <tr class="sub end"><td>In-class exercises and preparation</td><td>6%</td></tr>
   </table>
   <p style="font-size:.9rem;color:var(--ink-soft)">
-    1.0 cu. No late submissions without prior approval. Each unexcused absence deducts 5%
-    from the final grade &mdash; contact Joe in advance if you need to miss a class.
+    1.0 cu. No late submissions without prior approval. Attendance is expected rather than
+    credited: there are no points for showing up, but each unexcused absence deducts 5% from
+    the final grade, separately from the table above. Contact Joe in advance if you need to
+    miss a class.
   </p>
 
   <div class="callout">
@@ -385,6 +404,11 @@
     Presenters must also run the paper past an LLM chatbot and report which of its criticisms
     hold up and which are wrong.
   </p>
+  <p>
+    The presentation is worth 10% of the final grade &mdash; the same as one homework
+    assignment. Discussion on the other ten weeks is worth a further 4%: everyone is expected to
+    have read the paper and to take part, not only the pair presenting it.
+  </p>
 
   <h3 id="final-project">Final project</h3>
   <p>
@@ -395,15 +419,23 @@
     10-minute recorded presentation. Full specification in the
     <a href="LINK::final-project-instructions">final project instructions</a>.
   </p>
+  <p>
+    A one-page <a href="LINK::project-proposal">proposal</a> is due <strong>Oct 22</strong>,
+    stating the problem, the deductive component, the data or resources you will use, and which
+    of the two project types you are doing. It is graded, and it is how your topic gets cleared
+    before you build anything. It falls the week after CLIPS is taught, so implementation
+    students propose a tool having already used it.
+  </p>
 
   <h3 id="ai-policy">Generative AI policy</h3>
   <p>
-    Although this is a course on AI, all graded work &mdash; the four homework assignments and
-    the final project &mdash; must be completed without generative AI assistance. Violations are
-    treated as plagiarism under Penn's
+    Although this is a course on AI, the four homework assignments and the final project
+    &mdash; proposal, code, report, and presentation &mdash; must be completed without
+    generative AI assistance. Violations are treated as plagiarism under Penn's
     <a href="https://catalog.upenn.edu/pennbook/code-of-academic-integrity">Code of Academic
     Integrity</a>. Two exceptions: the LLM-driven critique in journal club, where its use is
-    required, and the ungraded in-class exercises.
+    required, and the in-class exercises, which earn credit for engagement rather than
+    correctness.
   </p>
 
   <h3 id="accommodations">Disability accommodations</h3>
@@ -482,6 +514,10 @@
         <li>
           <a href="LINK::final-project-instructions">Project instructions</a>
           <span class="note">Both project types, report sections, grading.</span>
+        </li>
+        <li>
+          <a href="LINK::project-proposal">Proposal instructions</a>
+          <span class="note">One page. Due Oct 22.</span>
         </li>
         <li>
           <a href="https://www.overleaf.com/latex/templates/aaai-press-latex-template/jymjdgdpdmxp">AAAI LaTeX template</a>
@@ -632,6 +668,7 @@
           <a href="LINK::notebook-week06">Notebook: chaining engine</a>
           <a href="LINK::paper-week06">Paper</a>
           <a class="due-item" href="LINK::hw2">HW 2 due</a>
+          <a href="LINK::project-proposal">Project proposal assigned</a>
         </td>
       </tr>
 
@@ -650,7 +687,7 @@
         </td>
       </tr>
 
-      <tr>
+      <tr class="due">
         <td class="wk">8</td>
         <td class="date">Oct 22</td>
         <td class="topic">
@@ -662,6 +699,7 @@
           <a href="LINK::notebook-week08">Notebook: Bayes nets</a>
           <a href="LINK::paper-week08">Paper</a>
           <a href="LINK::hw4">HW 4 assigned</a>
+          <a class="due-item" href="LINK::project-proposal">Project proposal due</a>
         </td>
       </tr>
 
