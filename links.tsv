@@ -47,9 +47,9 @@ slides-week12
 slides-week13
 
 # Journal club papers. Weeks 1 and 2 have no journal club.
-paper-week03	# Babalou et al.
-paper-week04	# Wolpert & Macready (1997)
-paper-week05	# Nagarajan & Babu
+paper-week03	https://upenn.box.com/s/z0p2r6ez8fq5c6kslm36m65qoxwo6g9a 
+paper-week04	https://upenn.box.com/s/bpjr7f2xh7ijf025zgbd9rqqsouegqtu
+paper-week05	https://upenn.box.com/s/guw0fzikw2dsnk4hz8038e47jxqewt4r
 paper-week06	# Shortliffe et al. (1973)
 paper-week07	# Michalowski et al.
 paper-week08	# Leclerc et al.
@@ -67,8 +67,8 @@ paper-week13	# Thirunavukarasu et al.
 # line, commit, push. That is the whole action - one character.
 #
 # To hide one again, put the '#' back.
-#notebook-week01	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week01.ipynb
-#notebook-week02	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week02.ipynb
+notebook-week01	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week01.ipynb
+notebook-week02	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week02.ipynb
 #notebook-week03	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week03.ipynb
 #notebook-week04	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week04.ipynb
 #notebook-week05	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week05.ipynb
