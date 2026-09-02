@@ -17,6 +17,9 @@ links.tsv              Every Box URL in the project, in one table.
 syllabus-2026.tex      Syllabus source. Run ./build-syllabus.sh, commit the PDF.
 build-syllabus.sh      Compiles the syllabus into new-course-site/ (reproducibly).
 journal-club-2026.md   Paper selection and format for the reduced journal club.
+SETUP.md               Student-facing software setup: Colab, local Python, submission.
+LICENSE                CC BY-NC-SA 4.0, covering the public course material.
+NOTICE.md              What the licence does and does not cover. Read before reusing.
 .github/workflows/     pages.yml — builds and deploys the site on push to main.
 ```
 
@@ -85,3 +88,13 @@ Two things the export did **not** contain, worth knowing if you ever need to go 
 manifest's `<organizations>` block is empty, so the Canvas module structure did not survive, and
 `wiki_content/` is empty, so there are no Pages. Student submissions and grades are never
 included in a cartridge.
+
+## Licence
+
+The public course material here — notebooks, site, syllabus source, and the structure of the
+course — is under [CC BY-NC-SA 4.0](LICENSE): share and adapt with attribution,
+non-commercially, under the same terms. Instructors elsewhere are welcome to it.
+
+Material behind a PennKey login (slides, journal club papers, assignment files, class
+recordings on Canvas or Box) is **not** covered and must not be redistributed — much of it is
+publisher-copyrighted and not the course's to relicense. See [NOTICE.md](NOTICE.md).

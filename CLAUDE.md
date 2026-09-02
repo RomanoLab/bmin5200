@@ -52,6 +52,12 @@ significantly altered. The refactor changed structure, not subject matter.
 
 ## Things that will bite you
 
+**The repo is CC BY-NC-SA 4.0; PennKey-gated material is not.** `LICENSE` carries the full text
+and `NOTICE.md` explains the split: the notebooks, site, syllabus source, and course structure
+are licensed for reuse, while anything on Canvas or Box (slides, papers, assignment files,
+recordings) is not the course's to relicense. Keep the syllabus, `NOTICE.md`, and the site's
+"Reusing course material" section saying the same thing.
+
 **Never commit anything copyrighted.** `old-canvas/` is gitignored: 763 MB of publisher
 copyrighted journal club PDFs, the 2025 decks, and two 228 MB cartridge files. This repo is
 public — it has to be, or the Colab links break. Papers and slides live on Box behind PennKey.

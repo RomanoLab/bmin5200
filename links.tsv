@@ -19,7 +19,8 @@ github-repo	RomanoLab/bmin5200
 # Course-level links
 # (No syllabus-pdf key: the syllabus is a static asset committed at
 #  new-course-site/syllabus-2026.pdf and linked directly, not via Box.)
-setup-guide
+# (No setup-guide key either: the setup doc is SETUP.md in this repo,
+#  linked directly on GitHub rather than hosted on Box.)
 canvas  https://canvas.upenn.edu/courses/1925812
 final-project-instructions
 project-proposal
