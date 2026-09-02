@@ -55,17 +55,21 @@ Cells in this order:
 
    **Time:** ~25 minutes · **Pairs with:** <lecture deck topic>
 
-   ### What you'll do
+   ### Tasks
    - <bullet>
    - <bullet>
    - <bullet>
 
-   ### Why it matters
+   ### Background
    <Two or three sentences connecting the exercise to real biomedical practice. Not
    filler — say something a clinician would find true.>
    ```
 
-   Leave `LINK::github-repo` verbatim. A separate script substitutes it at deploy time.
+   Headings are descriptive noun phrases, not vivid ones. `## Part 4 — Combinatorial limits`,
+   not `## Part 4 — Where this approach dies`; `Common errors`, not `Common gotchas`. The body
+   prose can be as direct as it likes — the headings stay flat and academic.
+
+      Leave `LINK::github-repo` verbatim. A separate script substitutes it at deploy time.
    `weekNN` is zero-padded: `week01.ipynb` … `week13.ipynb`.
 
 2. **Setup cell** (code) — installs and imports, quiet:
@@ -99,7 +103,7 @@ Cells in this order:
    - Print output that is readable out loud. Prefer a small formatted table or a labeled
      print over a raw repr dump.
 
-4. **Discussion cell** (markdown, near the end) — `## Talk about it`, with 2–3 questions
+4. **Discussion cell** (markdown, near the end) — `## Discussion`, with 2–3 questions
    for the room. These should not have clean answers.
 
 5. **Solutions cell(s)** (final section) — `## Solutions`, one markdown cell noting these
