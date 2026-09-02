@@ -1,0 +1,585 @@
+% ===========================================================================
+% BMIN 5200 syllabus — Fall 2026.
+%
+% THIS FILE IS THE SOURCE OF TRUTH for the syllabus. It replaced
+% syllabus-2026.md, which was deleted so there is only one prose copy to keep
+% current. When the syllabus changes, edit here and rebuild.
+%
+% BUILD (requires a local TeX Live; nothing in CI compiles this):
+%
+%     latexmk -pdf -outdir=build-tex syllabus-2026.tex
+%     cp build-tex/syllabus-2026.pdf new-course-site/syllabus-2026.pdf
+%
+% Then COMMIT THE PDF. new-course-site/syllabus-2026.pdf is a static asset
+% served straight off the site; apply_links.py copies it into build/ via
+% PASSTHROUGH. There is deliberately no LaTeX toolchain in the Actions
+% workflow -- a TeX error must not be able to take the whole site down.
+%
+% Stock TeX Live packages only. No custom class, no minted, no shell-escape.
+% ===========================================================================
+
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+% Match the course site's accent (--accent: #8c1515).
+\definecolor{accent}{HTML}{8C1515}
+\definecolor{inksoft}{HTML}{5A5F66}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accent,
+  urlcolor=accent,
+  pdftitle={BMIN 5200: Foundations of Artificial Intelligence in Health --- Fall 2026},
+  pdfauthor={Joseph D. Romano},
+}
+
+\titleformat{\section}{\Large\bfseries\color{accent}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.5em}
+\titleformat{\subsection}{\large\bfseries}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{1.1em}{0.4em}
+
+\setlist[itemize]{leftmargin=1.2em, itemsep=0.2em, topsep=0.3em}
+\setlist[enumerate]{leftmargin=1.6em, itemsep=0.2em, topsep=0.3em}
+
+\renewcommand{\arraystretch}{1.25}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+
+\newcommand{\handbookurl}{https://www.med.upenn.edu/BMI-training-programs/student-and-faculty-handbook.pdf}
+
+\begin{document}
+
+% ---------------------------------------------------------------- title ----
+\begin{center}
+  {\color{inksoft}\small\scshape BMIN 5200-001 \quad$\cdot$\quad Fall 2026}\\[0.6em]
+  {\LARGE\bfseries Foundations of Artificial Intelligence in Health}\\[0.9em]
+  {\normalsize Thursdays, 3:30--6:30pm \quad$\cdot$\quad 3600 Civic Center Blvd, Room 6E 031}\\[0.2em]
+  {\normalsize August 27 -- December 3, 2026}\\[0.2em]
+  {\normalsize Joseph D. Romano, PhD \quad$\cdot$\quad
+   \href{mailto:joseph.romano@pennmedicine.upenn.edu}{joseph.romano@pennmedicine.upenn.edu}}
+\end{center}
+
+\vspace{0.4em}
+{\color{accent}\hrule height 1.5pt}
+\vspace{0.8em}
+
+Welcome to BMIN 5200. This syllabus outlines the logistical details of the course. All course
+materials live on the \href{https://bmin5200.jdr.bio}{course website}; Canvas is used only for
+submitting assignments, viewing grades, and watching class recordings.
+
+Don't hesitate to ask if you have any questions about the information here or elsewhere --- Joe
+can be reached at
+\href{mailto:joseph.romano@pennmedicine.upenn.edu}{joseph.romano@pennmedicine.upenn.edu}, or you
+can ask before or after class.
+
+% ---------------------------------------------------------- description ----
+\section{Course description}
+
+As a subfield of computer science, artificial intelligence (AI) is often used interchangeably
+with the term `machine learning', which is itself only a subfield of AI dealing with the broader
+concept of \emph{inductive reasoning}. However, a wealth of key prerequisite topics that focus on
+\emph{deductive reasoning} cover a large portion of biomedical informatics applications being
+actively used today. These founding principles of AI and their intersection with biomedical
+informatics are the focus of this first course on AI, and lay the groundwork for future
+coursework on machine learning, artificial neural networks, and generative AI.
+
+This course is divided into modules that cover (1) introductory/background materials,
+(2) knowledge representation, (3) logic, (4) essentials of rule-based systems, (5) search,
+(6) information structure and inference, and (7) special topics. These topics offer a global
+foundation of branches of AI application and research in biomedical domains, including concepts
+that will later support a deeper understanding of inductive reasoning and machine learning.
+
+In a practical sense, this course focuses on how biomedical data can be organized, represented,
+interpreted, searched, and applied in order to derive knowledge, make decisions, and ultimately
+make predictions while mitigating bias.
+
+\emph{To reiterate: this course does not focus heavily on machine learning or generative AI, but
+it does present critically important deductive and symbolic AI concepts that are necessary for a
+deeper understanding of ML and GenAI. BMIN 5200 is the first in a 3-part course series on
+artificial intelligence, followed by BMIN 5210 (AI 2: Machine Learning) and BMIN 5220 (AI 3:
+Natural Language Processing).}
+
+% ----------------------------------------------------------- objectives ----
+\section{Course objectives}
+
+Upon completion of this course, students will be able to:
+
+\begin{itemize}
+  \item Describe the unique challenges of representing and applying human knowledge in an
+        \emph{in silico} environment
+  \item Explain the conceptual differences between deduction and induction, and the role of both
+        in AI
+  \item Discuss the past and current challenges to developing and implementing AI in biomedical
+        domains
+  \item Demonstrate knowledge of how common AI approaches can be developed to address real-world
+        biomedical problems
+  \item \textbf{Implement} core AI methods in Python --- inference engines, search algorithms,
+        expert systems, and probabilistic models --- rather than only describing them
+\end{itemize}
+
+% -------------------------------------------------------- prerequisites ----
+\section{Prerequisites}
+
+It is expected that all students will be somewhat familiar with basic biomedical concepts and
+terminology, as well as statistics and computer programming. It is suggested (but not strictly
+required) that students have taken Introduction to Biomedical Informatics (BMIN 5010), Data
+Science for Biomedical Informatics (BMIN 5030), and a programming course (any language is fine).
+All programming in this course will be done in Python, and a brief introduction to the language
+will be provided.
+
+No previous exposure to artificial intelligence is assumed.
+
+% ------------------------------------------------------- class meetings ----
+\section{Class meetings}
+
+\textbf{Thursdays, 3:30--6:30pm}, in person.\\
+\textbf{3600 Civic Center Boulevard, Room 6E 031.}
+
+First meeting \textbf{August 27, 2026}. Last meeting \textbf{December 3, 2026}.
+
+Class will not meet on:
+
+\begin{itemize}
+  \item \textbf{October 1, 2026} --- Fall Break (October 1--4)
+  \item \textbf{November 26, 2026} --- Thanksgiving (November 26--29)
+\end{itemize}
+
+That leaves 13 meetings, one per lecture topic.
+
+\subsection{Recording and virtual attendance}
+
+Class sessions are recorded over Zoom and posted to Canvas, so you can review a lecture later or
+catch up on one you missed. The recordings are for enrolled students only --- do not redistribute
+them.
+
+\textbf{There is no option to attend virtually.} The recordings exist for review, not as a
+substitute for being in the room: this course is built around discussion, journal club, and
+in-class work, none of which function if you are watching a video afterward. Attendance is in
+person.
+
+\subsection{Format of a typical meeting}
+
+\begin{tabular}{@{}ll@{}}
+  \toprule
+  0--30 min & Homework review \\
+  $\sim$60 min & Weekly lecture \\
+  $\sim$25 min & \textbf{In-class coding exercise} \\
+  10 min & Break \\
+  $\sim$25 min & Journal club \\
+  \bottomrule
+\end{tabular}
+
+The in-class coding exercise is new this year, and it replaces the second journal club paper.
+Each week's exercise is a Jupyter notebook that runs in Google Colab --- you click a link, and it
+works. You will build a propositional inference engine, a forward and backward chaining rule
+system, a search algorithm suite, an expert system in CLIPS, a Bayesian network, and a clinical
+agent, among others. These exercises earn credit for engagement and completion rather than for
+correct answers, and they are where the course's ideas stop being abstract. Several of them are
+direct on-ramps to the homework.
+
+\textbf{You must bring a laptop to every class.} You do not need to install anything: the
+exercises run in a browser through Colab. If you would rather work locally, a
+\texttt{requirements.txt} is provided in the course repository.
+
+% ---------------------------------------------------------------- units ----
+\section{Course units}
+
+This is a 1.0cu course.
+
+% ------------------------------------------------------------ materials ----
+\section{Where course materials live}
+
+\textbf{Course website:} the schedule, links to every lecture deck, the in-class notebooks, the
+journal club papers, and the assignment specifications. This is the first place to look.
+
+\textbf{Penn Box:} lecture slides, journal club PDFs, and assignment files. Box links from the
+course website require Penn SSO --- sign in with your PennKey.
+
+\textbf{Canvas:} assignment submission, grades, and the Zoom recordings of each class. Nothing
+else in the course depends on it --- lecture materials, notebooks, and papers are all reached
+from the course website.
+
+\textbf{GitHub:} the in-class exercise notebooks, in a public repository, each with an ``Open in
+Colab'' link.
+
+% --------------------------------------------------------- office hours ----
+\section{Office hours}
+
+TBD --- a poll will go out in the first week, and the time that works for the greatest number of
+students will be selected. One-on-one meetings with the course director or TA may be scheduled on
+an as-needed basis.
+
+% ------------------------------------------------------ course director ----
+\section{Course director}
+
+\textbf{Joseph D. Romano, PhD, MPhil, MA} (please feel free to call me Joe)\\
+Assistant Professor of Informatics and Pharmacology\\
+3600 Civic Center Blvd, 5E 300A, Philadelphia, PA 19104\\
+(+1) 215-573-5571\\
+\href{mailto:joseph.romano@pennmedicine.upenn.edu}{joseph.romano@pennmedicine.upenn.edu}
+
+\section{Teaching assistant}
+
+TBD --- will be announced before the first class meeting.
+
+% ------------------------------------------------------- expectations ------
+\section{Student expectations}
+
+Students are expected to come to class prepared for the day's content, and to ask questions and
+discuss that content following the lectures. Reviewing lecture slides before coming to class is
+strongly recommended.
+
+Students are expected to read all assigned materials, participate during class sessions, and
+complete the required assignments. This course requires the use of a laptop computer.
+
+% ----------------------------------------------------------- evaluation ----
+\section{Student evaluation}
+
+\begin{tabular}{@{}lr@{}}
+  \toprule
+  \textbf{Assignments} (four, weighted equally) & \textbf{40\%} \\
+  \textbf{Final project} & \textbf{40\%} \\
+  \textbf{Class participation} & \textbf{20\%} \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Assignments --- 40\% of final grade}
+
+Four graded submissions, weighted equally. Assignments are submitted via Canvas.
+
+\textbf{Late work receives a zero.} Assignment answers are reviewed in class once the deadline
+has passed, which makes it impossible to accept a submission after the fact --- the answers are
+public at that point. There is no partial-credit sliding scale and no grace period. If something
+comes up that will stop you meeting a deadline, email Joe as soon as you know, rather than after
+the deadline has gone by.
+
+\begin{tabular}{@{}llll@{}}
+  \toprule
+  \textbf{Assignment} & \textbf{Topic} & \textbf{Assigned} & \textbf{Due} \\
+  \midrule
+  Homework 1 & Logic & Sep 3 & Sep 17, 11:59pm \\
+  Homework 2 & Semantic networks \& search & Sep 24 & Oct 8, 11:59pm \\
+  Homework 3 & Expert system in CLIPS & Oct 15 & Nov 5, 11:59pm \\
+  Homework 4 & Bayesian networks & Oct 22 & Nov 19, 11:59pm \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Final project --- 40\% of final grade}
+
+Either an AI-based research project (for doctoral students) or a knowledge-based system
+implementation (for master's, professional, and other students), addressing a biomedical problem
+of your choice. Full details below, and discussed in class. The 40\% breaks down as:
+
+\begin{tabular}{@{}lrl@{}}
+  \toprule
+  \textbf{Component} & \textbf{Weight} & \textbf{Due} \\
+  \midrule
+  Proposal & 5\% & Oct 22, 11:59pm \\
+  Implementation and code & 10\% & Dec 11, 11:59pm \\
+  Written report & 17\% & Dec 11, 11:59pm \\
+  Recorded presentation & 8\% & Dec 11, 11:59pm \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Class participation --- 20\% of final grade}
+
+\begin{tabular}{@{}lr@{}}
+  \toprule
+  \textbf{Component} & \textbf{Weight} \\
+  \midrule
+  Journal club presentation & 10\% \\
+  Journal club discussion & 4\% \\
+  In-class exercises and preparation & 6\% \\
+  \bottomrule
+\end{tabular}
+
+The journal club presentation is worth as much as one homework assignment, which is roughly what
+it costs to prepare. Discussion credit is for the other ten weeks --- everyone reads the paper,
+not only the pair presenting it. In-class exercise credit is for engagement and completion, not
+for correct answers.
+
+Attendance is expected rather than credited. There are no points for showing up, so it is not
+listed above. Each unexcused absence deducts 5\% from your final number grade for the course,
+separately from the categories above.
+
+There is no form to fill in and no list of approved reasons. Email Joe as soon as something
+arises --- illness, a conflict, a family situation, anything --- and it will be treated as
+excused. What turns an absence into an unexcused one is not the reason behind it but the silence:
+absences become unexcused when you do not get in touch. The same goes for questions about
+anything else in this syllabus. Ask early.
+
+% -------------------------------------------------------- journal club ----
+\section{Journal club}
+
+Each week from Week 3 onward, we dedicate roughly 25 minutes to discussing one journal paper on
+that week's topic. \textbf{This is half of what the course ran in previous years} --- one paper
+per week instead of two --- so that we can spend the reclaimed time writing code.
+
+A \textbf{pair} of students is assigned to each paper. One presents background and methods, the
+other results and critique, and both lead the discussion afterward. With eleven papers and
+roughly twenty students, everyone presents exactly once.
+
+Paper presentations should include an overview of the paper (background, methods, results, and
+the authors' conclusions), followed by a set of discussion questions posed to the rest of the
+class. Presenters then lead the class in discussion and critique.
+
+All students are expected to have read the paper and to participate actively in the discussion.
+All papers are available in PDF format through the course website. The subject matter of each
+paper is briefly discussed in class two weeks before the presentation date, to allow students
+time to prepare.
+
+\subsection{LLM-driven critique}
+
+As part of each presentation, presenters must run the paper past an LLM chatbot of their choice,
+ask it to critique the work, and report back on: what it flagged, which of those criticisms are
+actually correct, and which are confidently wrong. The third question is the important one.
+
+% -------------------------------------------------------- final project ----
+\section{Final project}
+
+The final project ties together multiple topics covered in this course, with a specific focus on
+one or more sources or types of biomedical data. There are two types of final project, selected
+based on your degree program or registration status.
+
+\subsection{Research project (doctoral students; others may opt in)}
+
+Students use the concepts taught over the semester to complete an original research project
+addressing an area of interest or need in medicine. Examples include designing and evaluating a
+new clinical decision support algorithm, developing an ontology or knowledge base to support a
+specific domain along with use cases, or applying Bayesian networks to accomplish a novel task on
+a biomedical dataset. All projects should be applied to either a real or synthetic dataset, and
+should be cleared with Joe before work begins.
+
+Note that \textbf{deductive inference must be used} in this project. A project that exclusively
+or primarily focuses on machine learning is not acceptable.
+
+\subsection{Implementation project (master's and professional students)}
+
+Students propose and implement their own software tool to address a target biomedical task ---
+for example, an expert system that makes deductions toward a clinical task, such as a decision
+support system, an alert or reminder system, or one that proposes a diagnosis.
+
+Students conduct a literature search targeting a specific biomedical task or problem, identify
+relevant data, databases, experts, and resources for developing the tool, and complete an initial
+implementation. The tool does not have to be production-ready, but should demonstrate the
+intended functionality. This tool should be implemented in CLIPS (e.g., via clipspy).
+
+\subsection{Proposal}
+
+A one-page proposal is due \textbf{October 22, 2026, 11:59pm}, and is worth 5\% of the final
+grade. It states the biomedical problem, where deductive inference enters, the data or resources
+you plan to use, and which of the two project types you are doing. This is how your topic gets
+cleared before you start building. It falls the week after CLIPS is covered in class, so
+implementation students propose a tool having already worked with it.
+
+\subsection{Final report}
+
+Both project types involve a report with the same sections. The report should be an 8--10 page
+description of the project, including:
+
+\begin{itemize}
+  \item \textbf{Background} --- synthesize relevant literature and the need for AI-based
+        approaches to the problem. Include descriptions of any existing or previous deductive AI
+        solutions in the area.
+  \item \textbf{Materials and Methods} --- data, databases, and other resources used by and for
+        the creation of the system.
+  \item \textbf{Design} --- the high-level design of the proposed tool and how it integrates
+        multiple topics covered in this course.
+  \item \textbf{Demonstration} --- application of the tool to your task of interest and the
+        results. If the tool is not completely implemented, or does not function as intended,
+        discuss the current stage of implementation and your troubleshooting attempts.
+  \item \textbf{Discussion and Conclusions} --- challenges you overcame, advantages and
+        disadvantages of the tool, and how it could be improved or applied more broadly.
+  \item \textbf{References} --- relevant citations. No specific format is required, but
+        consistency and completeness both matter. Zotero or similar citation management software
+        is recommended.
+\end{itemize}
+
+The report must be typeset in \LaTeX{} using the
+\href{https://www.overleaf.com/latex/templates/aaai-press-latex-template/jymjdgdpdmxp}{AAAI
+template}.
+
+\textbf{Code submission.} Everyone additionally submits the code accompanying their project,
+either (preferred) in a GitHub repository linked from the text of the paper, or as a documented,
+well-structured directory alongside the report, compressed into a ZIP file.
+
+\subsection{Oral presentation}
+
+A 10-minute presentation structured around the format of the written report. Slides will be
+helpful. The presentation is recorded as a video and uploaded to the Box folder linked from the
+course website.
+
+Your slides should include a brief introduction to the biomedical problem, how you approached
+solving it using a deductive reasoning approach, and images (or a live demonstration) showing
+your program's input and output. Research projects should also briefly describe the evaluation
+approach and key takeaways.
+
+Please stick to the 10-minute limit. Since you can edit and re-record, there is no reason to run
+over, and points may be deducted for videos that run long.
+
+\textbf{Both the report and the presentation video are due December 11, 2026.}
+
+% ------------------------------------------------------ course materials ---
+\section{Course materials}
+
+No textbooks are strictly necessary, but the following are recommended:
+
+\begin{itemize}
+  \item Cawsey A. \emph{The Essence of Artificial Intelligence.} Pearson, 2nd ed., 2010.
+  \item Russell S and Norvig P. \emph{Artificial Intelligence: A Modern Approach.} Pearson,
+        4th ed., 2020.
+\end{itemize}
+
+Both may be found affordably online.
+
+% ------------------------------------------------------ academic honesty ---
+\section{Academic honesty}
+
+All work submitted for credit is expected to be your own work. In the preparation of all papers
+and other written work, you should always take great care to distinguish your own ideas and
+knowledge from information derived from other sources. The term ``sources'' includes not only
+published primary and secondary material, but also information and opinions gained directly from
+other people. The responsibility for learning the proper forms of citation lies with you. You
+must acknowledge any collaboration and its extent in all submitted work. You are expected to
+follow Penn's standards of academic integrity as found in the
+\href{https://catalog.upenn.edu/pennbook/code-of-academic-integrity}{Code of Academic Integrity}.
+
+\subsection{Violations}
+
+All violations of academic honesty and integrity are taken very seriously and will result in
+disciplinary action. Depending on the seriousness of the violation, action will be taken at the
+discretion of the course director, and may include reduction of grades, additional assignments, a
+failing grade for the course, and/or reporting the incident to the University for further
+evaluation.
+
+% ------------------------------------------------------------ AI policy ----
+\section{Statement on the use of artificial intelligence in assignments}
+
+Although this is a course on AI, all work completed as part of the assignments, journal club, and
+final project must be completed on your own volition, without the assistance of generative AI
+tools (or similar), unless otherwise instructed by the course director. Any and all violations of
+this policy will be treated similarly to other forms of plagiarism.
+
+\textbf{Two exceptions:}
+
+\begin{enumerate}
+  \item The \textbf{LLM-driven critique} portion of each journal club, in which you are expected
+        to use the LLM chatbot of your choice to assist in critiquing the article.
+  \item The \textbf{in-class coding exercises}, which earn credit for engagement rather than for
+        correct answers. Use whatever tools help you learn there --- though you will get more out
+        of them by typing the code yourself.
+\end{enumerate}
+
+The homework assignments and the final project --- proposal, code, report, and presentation ---
+are covered by the policy without exception.
+
+Please direct any and all questions to Joe --- if you have any doubts, it is better to ask in
+advance.
+
+% -------------------------------------------------------- accommodations ---
+\section{Students with disabilities}
+
+The University of Pennsylvania provides reasonable accommodations to students with disabilities
+who have self-identified and been approved by the office of Student Disabilities Services (SDS).
+Please make an appointment to meet with me as soon as possible in order to discuss your
+accommodations and your needs. If you have not yet contacted SDS and would like to request
+accommodations or have questions, you can make an appointment by calling (215) 573-9235. The SDS
+office is located in the Weingarten Learning Resources Center at Stouffer Commons, 3702 Spruce
+Street, Suite 300. All SDS services are free and confidential. Please visit the
+\href{https://www.vpul.upenn.edu/lrc/sds/}{SDS website} for more information.
+
+% ------------------------------------------------------------- licensing ---
+\section{Course materials: reuse and redistribution}
+
+Course materials fall into two groups, and they are not treated the same way.
+
+\textbf{Public materials --- reusable.} Everything in the public course repository on GitHub ---
+the in-class notebooks, the course website, and the structure and organization of the course
+itself --- is released under a
+\href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0} licence. You may share and adapt this material,
+including after the course ends, provided you give attribution, do not use it commercially, and
+license anything you build from it on the same terms. Instructors elsewhere are welcome to it.
+
+\textbf{Anything behind a Penn login --- not redistributable.} Material hosted on Canvas or Penn
+Box, including the lecture slides, the journal club papers, the assignment files, and the class
+recordings, is available to enrolled students only and must not be redistributed. This is not a
+formality: much of that material is copyrighted by publishers and others, and the course director
+holds neither the copyright nor a licence to pass it on. Posting a journal club PDF to a public
+repository or a file-sharing site is a copyright violation regardless of the course's own
+licensing.
+
+If you are unsure which group something belongs to, the rule of thumb is where you got it: if
+PennKey was required, treat it as not redistributable.
+
+% --------------------------------------------------- program policies ------
+\section{University and program policies}
+
+This syllabus covers the policies specific to BMIN 5200. Policies that are not addressed here are
+governed by the \href{\handbookurl}{IBI Master's and Certificate Programs Student and Faculty
+Handbook} (2026--2027 edition), which is the reference for anything this document does not say.
+Among other things, it covers the Code of Academic Integrity and Code of Student Conduct, the
+University's Equal Opportunity and Nondiscrimination Statement, the Sexual Misconduct Policy and
+associated resource offices and complaint procedures, student and academic grievance procedures,
+registration, leave of absence, audit, academic standing and probation, the program's
+standardized grading scale, course evaluations, the policy on secular and religious holidays,
+suspension of normal operations and University closures, guidance on academic issues for students
+with disabilities, and University resources including Counseling and Psychological Services
+(CAPS) and the Weingarten Learning Resources Center.
+
+The handbook is available at:\\
+\href{\handbookurl}{\texttt{\handbookurl}}
+
+Note that the handbook governs the Biomedical Informatics master's and certificate programs (MCI,
+MSBMI, and the BMI Certificate). Students enrolled through a doctoral program or another school
+should follow their own graduate group's policies where the two differ; the course-specific
+policies in this syllabus apply to everyone.
+
+% ------------------------------------------------------------- schedule ----
+\section{Schedule at a glance}
+
+Journal club papers are deliberately one week behind the lecture they cover: the paper discussed
+in a given week is on the previous week's topic, so that presenters have already been taught the
+material they are presenting on. Weeks 1 and 2 have no paper.
+
+\begin{longtable}{@{}cl>{\raggedright\arraybackslash}p{5.1cm}>{\raggedright\arraybackslash}p{3.3cm}l@{}}
+  \toprule
+  \textbf{\#} & \textbf{Date} & \textbf{Topic} & \textbf{Journal club} & \textbf{Due} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{\#} & \textbf{Date} & \textbf{Topic} & \textbf{Journal club} & \textbf{Due} \\
+  \midrule
+  \endhead
+  1 & Aug 27 & Course intro; history of AI & --- & \\
+  2 & Sep 3 & Knowledge representation \& logic & --- & \\
+  3 & Sep 10 & Semantic networks, frames, ontologies & Babalou et al. & \\
+  4 & Sep 17 & Heuristic, local \& population-based search & Wolpert \& Macready & \textbf{HW 1} \\
+  5 & Sep 24 & Biologically-inspired search & Nagarajan \& Babu & \\
+  --- & Oct 1 & \emph{No class --- Fall Break} & & \\
+  6 & Oct 8 & Rules \& knowledge-based systems & Shortliffe et al. & \textbf{HW 2} \\
+  7 & Oct 15 & Building an expert system: CLIPS / clipspy & Michalowski et al. & \\
+  8 & Oct 22 & Bayesian networks; state machines & Leclerc et al. & \textbf{Project proposal} \\
+  9 & Oct 29 & Information theory \& machine learning & Shen et al. & \\
+  10 & Nov 5 & Deep learning \& large language models & Vaswani et al. & \textbf{HW 3} \\
+  11 & Nov 12 & Explainable AI & Behrad et al. & \\
+  12 & Nov 19 & Bias \& fairness in AI & Pfohl et al. & \textbf{HW 4} \\
+  --- & Nov 26 & \emph{No class --- Thanksgiving} & & \\
+  13 & Dec 3 & Agentic AI & Thirunavukarasu et al. & \\
+  --- & Dec 11 & & & \textbf{Final report + video} \\
+  \bottomrule
+\end{longtable}
+
+\end{document}

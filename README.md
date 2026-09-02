@@ -14,7 +14,8 @@ exercises/             13 Colab-ready notebooks, one per class meeting.
 tools/                 extract_imscc.py, apply_links.py
 old-canvas/            The Canvas export and a readable extraction of it.  [not committed]
 links.tsv              Every Box URL in the project, in one table.
-syllabus-2026.md       Source for the syllabus PDF.
+syllabus-2026.tex      Syllabus source. Run ./build-syllabus.sh, commit the PDF.
+build-syllabus.sh      Compiles the syllabus into new-course-site/ (reproducibly).
 journal-club-2026.md   Paper selection and format for the reduced journal club.
 .github/workflows/     pages.yml — builds and deploys the site on push to main.
 ```

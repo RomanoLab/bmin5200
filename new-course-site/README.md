@@ -151,9 +151,11 @@ Nothing else should need touching.
 ## What deliberately is not here
 
 - **No syllabus copy.** The Course Information section carries what students actually look up —
-  format, grading, policies, dates. The authoritative syllabus is a PDF on Box, generated from
-  `syllabus-2026.md` at the repo root. Keeping the full text in two places guarantees they
-  drift apart.
+  format, grading, policies, dates. The authoritative syllabus is `syllabus-2026.pdf`, served
+  from this directory and built from `syllabus-2026.tex` at the repo root. Keeping the full
+  text in two places guarantees they drift apart. Note that the PDF is a committed build
+  product: edit the `.tex`, run `./build-syllabus.sh`, and commit the new PDF — CI will not
+  do it for you.
 - **No file hosting.** Slides and papers stay on Box behind PennKey. The papers are copyrighted;
   they must not be committed to a public repository.
 - **No JavaScript.** Nothing on the page needs it.

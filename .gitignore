@@ -30,3 +30,14 @@ Icon?
 __pycache__/
 *.pyc
 .venv/
+
+# LaTeX build products for syllabus-2026.tex. The PDF itself IS committed --
+# at new-course-site/syllabus-2026.pdf, because it is a static site asset and
+# nothing in CI compiles TeX. Only the intermediates are ignored.
+build-tex/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz

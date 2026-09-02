@@ -84,6 +84,7 @@ PASSTHROUGH = [
     "new-course-site/CNAME",
     "new-course-site/.nojekyll",
     "new-course-site/favicons",
+    "new-course-site/syllabus-2026.pdf",
     "exercises/requirements.txt",
 ]
 

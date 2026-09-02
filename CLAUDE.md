@@ -6,8 +6,8 @@ anything — several things here look like oversights and are actually decisions
 ## What this is
 
 A course taught Thursdays 3:30–6:30pm, Aug 27 – Dec 3 2026, 3600 Civic Center Blvd room 6E 031.
-Fall 2026 moved it off Canvas; Canvas is kept only for assignment submission and grades, because
-Penn requires it. Everything else is this repo plus Penn Box.
+Fall 2026 moved it off Canvas; Canvas is kept only for assignment submission, grades, and the
+Zoom recordings of each class, because Penn requires it. Everything else is this repo plus Penn Box.
 
 Published at **https://bmin5200.jdr.bio** from `RomanoLab/bmin5200`.
 
@@ -28,6 +28,24 @@ Prefer plain nouns over marketing phrasing, and cut rule-of-three flourishes and
 **No JavaScript on the site.** Nothing on the page needs it. This is why the sidebar nav has no
 scroll-spy highlight — that would require JS. Do not add a framework, a build system, or a
 dependency; `index.html` is one hand-written file that works when opened directly.
+
+**The syllabus is LaTeX, and its PDF is committed by hand.** `syllabus-2026.tex` is the single
+source of truth; the Markdown version was deleted so there is only one prose copy to keep
+current. The PDF is a static asset at `new-course-site/syllabus-2026.pdf`, linked directly from
+the site rather than through `links.tsv` — it is the one course document not behind PennKey.
+Nothing in CI compiles TeX, deliberately: a LaTeX error must not be able to fail the site
+deploy. So after editing the `.tex` you must rebuild and commit the PDF yourself:
+
+```
+./build-syllabus.sh
+```
+
+Editing the `.tex` without doing this ships a stale syllabus, and nothing will warn you.
+
+The script pins `SOURCE_DATE_EPOCH`, so an unchanged `.tex` rebuilds to a byte-identical PDF.
+Do not drop that: without it PDFTeX stamps the current time into the file and every rebuild
+shows up as a 216 KB binary diff, which makes the history useless for seeing when the syllabus
+actually changed.
 
 **Lecture content is unchanged from 2025.** Topics and the PowerPoint decks must not be
 significantly altered. The refactor changed structure, not subject matter.
@@ -82,12 +100,13 @@ account `jdromano2` would knock this site offline.
 ## Layout
 
 ```
-new-course-site/   The site. index.html (one file), CNAME, .nojekyll.
+new-course-site/   The site. index.html (one file), CNAME, .nojekyll, favicons/,
+                   syllabus-2026.pdf (committed build product, see below).
 exercises/         13 Colab notebooks, one per meeting. Must stay in the repo —
                    the site's links resolve against the public repo.
 tools/             apply_links.py (link resolver), extract_imscc.py (Canvas export reader)
 links.tsv          Every Box URL, in one table.
-syllabus-2026.md   Source for the syllabus PDF on Box.
+syllabus-2026.tex  THE syllabus source. Compile locally, commit the PDF (see below).
 journal-club-2026.md
 .github/workflows/ pages.yml — builds and deploys on push to main.
 old-canvas/        [gitignored] Canvas export. Source material, kept locally only.
