@@ -105,6 +105,24 @@ greyed with a "(TBA)" suffix and no click target. So the schedule stays complete
 semester, and nothing ever ships as a link that 404s. Fill the key in `links.tsv`, push, and that
 entry becomes a live link on the next deploy — this is the intended week-by-week workflow.
 
+### Links open in a new tab
+
+Every link that leaves the page carries `target="_blank" rel="noopener"` — Box documents, Colab
+notebooks, GitHub, Canvas, the syllabus PDF, and outside references. Students following a link
+mid-class should not lose the schedule they were reading. Add both attributes to any new outbound
+link; `rel="noopener"` is not optional, it stops the opened page reaching back into this one
+through `window.opener`.
+
+**Two deliberate exceptions**, both of which make things worse if you "fix" them:
+
+- **In-page anchors** (`href="#grading"` and the whole sidebar nav) stay in the tab. Targeting
+  them would open a second copy of the page on every nav click.
+- **`mailto:` links** stay in the tab. A `_blank` target on a mailto opens the mail client *and*
+  strands an empty browser tab behind it.
+
+There is no `<base target="_blank">` in the head, for the same reason: it would catch the in-page
+anchors too. The attributes are written out per link on purpose.
+
 ### Releasing a notebook
 
 The 13 in-class notebooks are a special case: they live in this repo, so there is no upload to
