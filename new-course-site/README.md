@@ -25,6 +25,17 @@ Two files in this directory exist only for the deploy and are not part of the pa
 - **`.nojekyll`** — stops GitHub running the published files through Jekyll, which would
   otherwise ignore anything starting with an underscore.
 
+### `favicons/`
+
+The browser tab icon: the same biohazard mark as `jdr.bio`, of which this site is a subdomain.
+The files were copied from `JDRomano2/jdr.bio` (`src/assets/icons/`) and are referenced by the
+`<link rel="icon">` tags at the top of `index.html`. `PASSTHROUGH` in `apply_links.py` copies the
+whole directory into `build/`, so adding another size needs no change to the script.
+
+The directory is named `favicons`, not `icons`, on purpose: `.gitignore` carries an `Icon?` rule
+for the marker files Box and the macOS Finder leave behind, and git's case-insensitive matching on
+macOS makes that rule swallow a directory named `icons`.
+
 ### The DNS side
 
 The repo is owned by the **RomanoLab** organization. `bmin5200` is a CNAME record pointing at

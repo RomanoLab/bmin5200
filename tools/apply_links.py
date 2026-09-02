@@ -78,9 +78,12 @@ TARGETS = [
 # CNAME binds the custom domain (bmin5200.jdr.bio). build/ is deleted and
 # rebuilt on every run, so anything not listed here vanishes from the published
 # tree -- and a published tree with no CNAME makes GitHub drop the domain.
+# A directory here is copied whole, so dropping another size into
+# new-course-site/favicons/ needs no change to this list.
 PASSTHROUGH = [
     "new-course-site/CNAME",
     "new-course-site/.nojekyll",
+    "new-course-site/favicons",
     "exercises/requirements.txt",
 ]
 
@@ -187,8 +190,11 @@ def main() -> int:
     if not args.check:
         for pattern in PASSTHROUGH:
             src = root / pattern
-            if src.is_file():
-                dest = outdir / pattern
+            dest = outdir / pattern
+            if src.is_dir():
+                shutil.copytree(src, dest)
+                written += sum(1 for f in src.rglob("*") if f.is_file())
+            elif src.is_file():
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, dest)
                 written += 1
