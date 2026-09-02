@@ -20,12 +20,12 @@ github-repo	RomanoLab/bmin5200
 # (No syllabus-pdf key: the syllabus is a static asset committed at
 #  new-course-site/syllabus-2026.pdf and linked directly, not via Box.)
 setup-guide
-canvas
+canvas  https://canvas.upenn.edu/courses/1925812
 final-project-instructions
 project-proposal
 project-video-upload
 clips-reference
-papers-archive
+papers-archive  https://upenn.box.com/s/ns21gnp07qpamutpa5b8ad98wjkoc56w
 
 # Homework — link to the assignment file (.ipynb or .zip) on Box
 hw1
