@@ -37,7 +37,7 @@ hw4
 # Lecture slides, one per meeting
 slides-week01	https://upenn.box.com/s/zsuz3zodbuz6ay1jdjuvcietg5g0qvs9
 slides-week02   https://upenn.box.com/s/mia64tr3glfslg4evzzz5rp812espytc
-slides-week03
+slides-week03   https://upenn.box.com/s/fs1crgna22xtid0mt26do1fby7an80sn
 slides-week04
 slides-week05
 slides-week06
@@ -72,7 +72,7 @@ paper-week13	https://upenn.box.com/s/misnfodovxj1hqlqc9nt3kx976d9lo45
 # To hide one again, put the '#' back.
 notebook-week01	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week01.ipynb
 notebook-week02	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week02.ipynb
-#notebook-week03	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week03.ipynb
+notebook-week03	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week03.ipynb
 #notebook-week04	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week04.ipynb
 #notebook-week05	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week05.ipynb
 #notebook-week06	https://colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/week06.ipynb
