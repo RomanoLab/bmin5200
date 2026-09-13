@@ -34,11 +34,16 @@ hw2
 hw3
 hw4
 
-# Lecture slides, one per meeting
+# Lecture slides, one per meeting.
+#
+# Key numbers match the meeting numbers on the site. Sep 24 was cancelled and the
+# agentic AI lecture came out with it, so the *-week13 keys are unused this year.
+# They are left in place in case the lecture returns; apply_links.py does not care
+# about a key nothing references.
 slides-week01	https://upenn.box.com/s/zsuz3zodbuz6ay1jdjuvcietg5g0qvs9
 slides-week02   https://upenn.box.com/s/mia64tr3glfslg4evzzz5rp812espytc
 slides-week03   https://upenn.box.com/s/fs1crgna22xtid0mt26do1fby7an80sn
-slides-week04
+slides-week04   https://upenn.box.com/s/6cnznjdg6ln7swgdnsh0eynscci3rzhx
 slides-week05
 slides-week06
 slides-week07

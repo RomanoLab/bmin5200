@@ -3,7 +3,10 @@
 ## What changed
 
 Fall 2025 ran **22 papers**: two per week for eleven weeks, roughly 40 minutes of class time.
-Fall 2026 runs **11 papers**: one per week for eleven weeks, roughly 25 minutes.
+Fall 2026 runs **10 papers**: one per meeting for ten meetings, roughly 25 minutes.
+
+The count started at 11 and dropped to 10 when Sep 24 was cancelled (instructor away). Cancelling
+a meeting removes a presentation slot, and the slot it removed was the last one — see below.
 
 The reclaimed time goes to the in-class coding exercise. The reasoning: students were reading
 two papers a week and writing no code, in a course whose syllabus promises that all programming
@@ -14,10 +17,12 @@ Three knock-on changes:
 - **Each paper covers the _previous_ week's lecture topic.** In 2025 a paper was matched to the
   week whose lecture it argued with, which meant presenters had to prepare on material they had
   not yet been taught. Shifting by one week means the lecture always comes first. It also means
-  the Week 13 lecture topic (agentic AI) has no paper, and Weeks 1 and 2 have none because
+  the final lecture topic has no paper, and Weeks 1 and 2 have none because
   there is no preceding lecture to draw on.
-- **One presenter per paper.** With 11 students and 11 slots, everybody presents exactly once,
-  alone. The 2025 pairing scheme existed to fit ~20 students into 11 slots and is retired.
+- **One presenter per paper.** The 2025 pairing scheme existed to fit ~20 students into 11 slots
+  and is retired. **Open:** 11 students now share 10 slots. Options are doubling up one
+  mid-semester week with a substitute from the list below, pairing two students on one paper, or
+  making Obermeyer a whole-class reading for the final meeting. Undecided.
 - **The second-paper extra credit is retired.** It existed to cover 22 slots. There is nothing
   left for it to solve.
 
@@ -27,22 +32,27 @@ course, and it works better with one paper than two.
 ## Papers
 
 No reviews or surveys. Each paper is either a seminal statement of the method or a strong
-example of applying it to a health problem. Six carry direct clinical or biomedical content;
+example of applying it to a health problem. Five carry direct clinical or biomedical content;
 five are foundational computer science.
 
 | Wk | Date | Covers (previous week) | Paper | Why this one |
 | --- | --- | --- | --- | --- |
 | 3 | Sep 10 | Knowledge representation & logic | McCarthy (1959), *Programs with Common Sense* | The founding argument for representing knowledge as logic a program can reason over. Seven pages; the Advice Taker is the ancestor of everything in Weeks 2–7 |
 | 4 | Sep 17 | Semantic networks, frames, ontologies | Ashburner et al. (2000), *Gene ontology: tool for the unification of biology*, Nat Genet 25(1):25–29 | The most consequential biomedical ontology ever built, described by the people building it |
-| 5 | Sep 24 | Heuristic, local & population-based search | Wolpert & Macready (1997), *No Free Lunch Theorems for Optimization*, IEEE Trans Evol Comput 1(1):67–82 | The result that says your favourite search algorithm has no general claim to being better. Forces the question of what a heuristic is actually buying you |
-| 6 | Oct 8 | Biologically-inspired search | Kennedy & Eberhart (1995), *Particle Swarm Optimization*, ICNN'95:1942–1948 | Origin of PSO, half of the Week 5 notebook. Strikingly informal for a foundational paper — good discussion fodder |
-| 7 | Oct 15 | Rules & knowledge-based systems | Shortliffe et al. (1973), *An artificial intelligence program to advise physicians regarding antimicrobial therapy*, Comput Biomed Res 6(6):544–560 | MYCIN. Still the clearest statement of what a clinical rule base was supposed to do |
-| 8 | Oct 22 | Building an expert system (CLIPS) | Miller, Pople & Myers (1982), *Internist-1*, N Engl J Med 307(8):468–476 | A systematic evaluation of a large knowledge base that concludes it is not clinically reliable, and says exactly why. The honest counterweight to MYCIN, read while they build Homework 3 |
-| 9 | Oct 29 | Bayesian networks; state machines | de Dombal et al. (1972), *Computer-aided diagnosis of acute abdominal pain*, Br Med J 2(5804):9–13 | A controlled prospective trial of Bayesian diagnosis in 304 patients with acute abdominal pain: 91.8% accuracy against 79.6% for the senior clinician on each case. Read after INTERNIST-1 it poses the obvious question — one narrow system worked, one broad one did not, and neither deployed |
-| 10 | Nov 5 | Information theory & machine learning | Quinlan (1986), *Induction of decision trees*, Machine Learning 1:81–106 | Information gain doing actual work — the entropy-and-trees notebook, in its original form |
-| 11 | Nov 12 | Deep learning & large language models | Vaswani et al. (2017), *Attention Is All You Need* | Read the actual paper, not a summary of it |
-| 12 | Nov 19 | Explainable AI | Caruana et al. (2015), *Intelligible Models for HealthCare*, KDD:1721–1730 | The asthma/pneumonia paradox: an accurate model that would have killed people, caught only because it was intelligible |
-| 13 | Dec 3 | Bias & fairness in AI | Obermeyer et al. (2019), *Dissecting racial bias in an algorithm used to manage the health of populations*, Science 366(6464):447–453 | Racial bias in a deployed algorithm affecting millions, traced to a single proxy-variable choice |
+| 5 | Oct 8 | Heuristic, local & population-based search | Wolpert & Macready (1997), *No Free Lunch Theorems for Optimization*, IEEE Trans Evol Comput 1(1):67–82 | The result that says your favourite search algorithm has no general claim to being better. Forces the question of what a heuristic is actually buying you |
+| 6 | Oct 15 | Biologically-inspired search | Kennedy & Eberhart (1995), *Particle Swarm Optimization*, ICNN'95:1942–1948 | Origin of PSO, half of the Week 5 notebook. Strikingly informal for a foundational paper — good discussion fodder |
+| 7 | Oct 22 | Rules & knowledge-based systems | Shortliffe et al. (1973), *An artificial intelligence program to advise physicians regarding antimicrobial therapy*, Comput Biomed Res 6(6):544–560 | MYCIN. Still the clearest statement of what a clinical rule base was supposed to do |
+| 8 | Oct 29 | Building an expert system (CLIPS) | Miller, Pople & Myers (1982), *Internist-1*, N Engl J Med 307(8):468–476 | A systematic evaluation of a large knowledge base that concludes it is not clinically reliable, and says exactly why. The honest counterweight to MYCIN, read while they build Homework 3 |
+| 9 | Nov 5 | Bayesian networks; state machines | de Dombal et al. (1972), *Computer-aided diagnosis of acute abdominal pain*, Br Med J 2(5804):9–13 | A controlled prospective trial of Bayesian diagnosis in 304 patients with acute abdominal pain: 91.8% accuracy against 79.6% for the senior clinician on each case. Read after INTERNIST-1 it poses the obvious question — one narrow system worked, one broad one did not, and neither deployed |
+| 10 | Nov 12 | Information theory & machine learning | Quinlan (1986), *Induction of decision trees*, Machine Learning 1:81–106 | Information gain doing actual work — the entropy-and-trees notebook, in its original form |
+| 11 | Nov 19 | Deep learning & large language models | Vaswani et al. (2017), *Attention Is All You Need* | Read the actual paper, not a summary of it |
+| 12 | Dec 3 | Explainable AI | Caruana et al. (2015), *Intelligible Models for HealthCare*, KDD:1721–1730 | The asthma/pneumonia paradox: an accurate model that would have killed people, caught only because it was intelligible |
+
+**Obermeyer et al. (2019)**, *Dissecting racial bias in an algorithm used to manage the health of
+populations*, Science 366(6464):447–453 — racial bias in a deployed algorithm affecting millions,
+traced to a single proxy-variable choice — was the Week 13 paper. Bias & fairness is now the last
+lecture, so nothing follows it for a paper to sit in. The PDF is already on Box under
+`paper-week13`; it is the obvious required reading for the final meeting if it is not presented.
 
 Every citation above was verified against PubMed or the publisher record. Where to obtain each
 PDF is listed in the next section.
@@ -65,11 +75,12 @@ on-campus connection.
 | 10 | Quinlan (1986) | https://doi.org/10.1007/BF00116251 | Springer — Penn |
 | 11 | Vaswani et al. (2017) | https://arxiv.org/abs/1706.03762 | Free (arXiv). **Already in the 2025 files** |
 | 12 | Caruana et al. (2015) | https://doi.org/10.1145/2783258.2788613 | ACM DL — Penn |
-| 13 | Obermeyer et al. (2019) | https://doi.org/10.1126/science.aax2342 | Science — Penn |
+| — | Obermeyer et al. (2019) | https://doi.org/10.1126/science.aax2342 | Science — Penn. Unslotted, see above |
 
 Upload each to Box, set the share audience to **People in your company**, and paste the link
-into the matching `paper-weekNN` key in `links.tsv`. The keys are unchanged from before — only
-the paper behind each one has changed.
+into the matching `paper-weekNN` key in `links.tsv`. The key numbers still match the meeting
+numbers above — `paper-week05` is discussed at meeting 5 — so the Sep 24 cancellation moved
+dates, not keys, and nothing needs re-uploading.
 
 ## Papers no longer used
 
@@ -80,7 +91,7 @@ largely restates the lecture. As readings they set up the Week 1 ELIZA exercise 
 **Dropped from the 2025 set.** Babalou et al. and Behrad et al. are surveys and fail the
 no-review rule outright. Nagarajan & Babu, Leclerc et al., Shen et al., Michalowski et al.,
 Pfohl et al. and Thirunavukarasu et al. are displaced by stronger papers on the same topics —
-Pfohl by Obermeyer, Thirunavukarasu by the removal of the agentic-AI slot. Also unused, from
+Pfohl by Obermeyer, Thirunavukarasu by the removal of the agentic-AI lecture. Also unused, from
 2025: Naz et al., Squires et al., Sung & Chi, Rodrigues de Araújo et al., Sadik et al.,
 Shamshad et al., Balagopalan et al., Combi et al., Ladbury et al.
 

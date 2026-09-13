@@ -1,7 +1,9 @@
 # In-class coding exercises
 
-Thirteen notebooks, one per class meeting. Each is designed for **25–30 minutes** of class
-time immediately after the lecture, and each pairs with that week's slide deck.
+Thirteen notebooks. Twelve are scheduled — Sep 24 was cancelled and the agentic AI lecture
+came out with it, so `week13.ipynb` is unscheduled this year (see below). Each is designed for
+**25–30 minutes** of class time immediately after the lecture, and each pairs with that week's
+slide deck.
 
 These replaced the second journal club paper. The trade was deliberate: students were reading
 two papers a week and writing no code, in a course whose syllabus promises that "all
@@ -28,15 +30,15 @@ jupyter lab
 | 2 | Sep 3 | `week02.ipynb` | A propositional model checker; watch 2ⁿ bite |
 | 3 | Sep 10 | `week03.ipynb` | Inheritance and inferential distance over an ontology |
 | 4 | Sep 17 | `week04.ipynb` | BFS/DFS/UCS/greedy/A* as one algorithm with five priorities |
-| 5 | Sep 24 | `week05.ipynb` | A genetic algorithm and a particle swarm |
-| 6 | Oct 8 | `week06.ipynb` | A forward and backward chaining engine, from scratch |
-| 7 | Oct 15 | `week07.ipynb` | A transfusion expert system in CLIPS / clipspy |
-| 8 | Oct 22 | `week08.ipynb` | A clinical Bayes net, and a titration state machine |
-| 9 | Oct 29 | `week09.ipynb` | Entropy and mutual information; a readable decision tree |
-| 10 | Nov 5 | `week10.ipynb` | Tokenization, attention, contextual embeddings |
-| 11 | Nov 12 | `week11.ipynb` | SHAP vs. LIME on the Week 9 model |
-| 12 | Nov 19 | `week12.ipynb` | A fairness audit of the same model |
-| 13 | Dec 3 | `week13.ipynb` | A clinical agent, and the three guardrails it needs |
+| 5 | Oct 8 | `week05.ipynb` | A genetic algorithm and a particle swarm |
+| 6 | Oct 15 | `week06.ipynb` | A forward and backward chaining engine, from scratch |
+| 7 | Oct 22 | `week07.ipynb` | A transfusion expert system in CLIPS / clipspy |
+| 8 | Oct 29 | `week08.ipynb` | A clinical Bayes net, and a titration state machine |
+| 9 | Nov 5 | `week09.ipynb` | Entropy and mutual information; a readable decision tree |
+| 10 | Nov 12 | `week10.ipynb` | Tokenization, attention, contextual embeddings |
+| 11 | Nov 19 | `week11.ipynb` | SHAP vs. LIME on the Week 9 model |
+| 12 | Dec 3 | `week12.ipynb` | A fairness audit of the same model |
+| — | not scheduled | `week13.ipynb` | A clinical agent, and the three guardrails it needs |
 
 ## How they connect
 
@@ -55,6 +57,15 @@ Week 9. Students discover it themselves rather than being told it exists.
 **The opening question.** Week 1 ends with students writing down what they think it would take
 for a system to actually understand a patient complaint. Week 13 hands that answer back to them
 with a semester of symbolic AI behind it.
+
+### Week 13 without a lecture
+
+Cancelling Sep 24 cost a meeting, and the agentic AI lecture — a guest lecture, with no journal
+club paper riding on it — is what came out. That leaves `week13.ipynb` written but unscheduled,
+and it is the notebook that closes two of the three threads above: the agent planner is the Week
+6 inference engine renamed, and the opening question comes back. Release it as optional
+self-study alongside the Dec 3 materials, and spend ten minutes of that class on the reveal —
+the notebook costs nothing to hand out and the callback is most of its value.
 
 ## Notes for teaching
 

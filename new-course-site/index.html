@@ -252,6 +252,10 @@
   table.schedule td.links .tba { display: inline-block; margin: 0 .9rem .2rem 0; white-space: nowrap; }
   table.schedule tr.off td { color: var(--off); font-style: italic; }
   table.schedule tr.off td.topic { font-weight: 400; }
+  /* A deadline on a cancelled-class row is still a live deadline: the row is
+     greyed and italic, the due item inside it is not. */
+  table.schedule tr.off td.links .due-item,
+  table.schedule tr.off td.links .due-item.tba { color: var(--ink); font-style: normal; }
   /* Bold marks a deadline, and only the deadline. This used to bold the whole
      links cell of a tr.due row, which also emphasised that week's slides,
      notebook and paper -- so the bold stopped pointing at anything. */
@@ -434,7 +438,7 @@
     <a href="LINK::final-project-instructions" target="_blank" rel="noopener">final project instructions</a>.
   </p>
   <p>
-    A one-page <a href="LINK::project-proposal" target="_blank" rel="noopener">proposal</a> is due <strong>Wed Oct 21</strong>,
+    A one-page <a href="LINK::project-proposal" target="_blank" rel="noopener">proposal</a> is due <strong>Wed Oct 28</strong>,
     stating the problem, the deductive component, the data or resources you will use, and which
     of the two project types you are doing. It is graded, and it is how your topic gets cleared
     before you build anything. It falls the week after CLIPS is taught, so implementation
@@ -516,7 +520,7 @@
         </li>
         <li>
           <a href="https://github.com/LINK::github-repo" target="_blank" rel="noopener">Course repository on GitHub</a>
-          <span class="note">All thirteen in-class notebooks, with Colab links.</span>
+          <span class="note">All in-class notebooks, with Colab links.</span>
         </li>
       </ul>
     </div>
@@ -552,7 +556,7 @@
         </li>
         <li>
           <a href="LINK::project-proposal" target="_blank" rel="noopener">Proposal instructions</a>
-          <span class="note">One page. Due Wed Oct 21, 11:59pm.</span>
+          <span class="note">One page. Due Wed Oct 28, 11:59pm.</span>
         </li>
         <li>
           <a href="https://www.overleaf.com/latex/templates/aaai-press-latex-template/jymjdgdpdmxp" target="_blank" rel="noopener">AAAI LaTeX template</a>
@@ -601,7 +605,7 @@
   <h2>Schedule</h2>
 
   <p>
-    Thirteen meetings. Lecture slides and journal club papers are on Box (PennKey required);
+    Twelve meetings. Lecture slides and journal club papers are on Box (PennKey required);
     the in-class notebooks open directly in Colab. Each journal club paper covers the
     <em>previous</em> week's lecture topic, not that day's &mdash; so the material has always
     been taught before anyone has to present on it. A due item is listed on the class meeting it is due
@@ -666,22 +670,16 @@
           <a href="LINK::slides-week04" target="_blank" rel="noopener">Slides</a>
           <a href="LINK::notebook-week04" target="_blank" rel="noopener">Notebook: A*</a>
           <a href="LINK::paper-week04" target="_blank" rel="noopener">Paper</a>
+          <a href="LINK::hw2" target="_blank" rel="noopener">HW 2 assigned</a>
         </td>
       </tr>
 
-      <tr class="due">
-        <td class="wk">5</td>
+      <tr class="off due">
+        <td class="wk">&mdash;</td>
         <td class="date">Sep 24</td>
-        <td class="topic">
-          Biologically-inspired search
-          <span class="jc">Journal club: Wolpert &amp; Macready (1997)</span>
-        </td>
+        <td class="topic">No class &mdash; instructor away</td>
         <td class="links">
-          <a href="LINK::slides-week05" target="_blank" rel="noopener">Slides</a>
-          <a href="LINK::notebook-week05" target="_blank" rel="noopener">Notebook: GA &amp; PSO</a>
-          <a href="LINK::paper-week05" target="_blank" rel="noopener">Paper</a>
           <a class="due-item" href="LINK::hw1" target="_blank" rel="noopener">HW 1 due</a>
-          <a href="LINK::hw2" target="_blank" rel="noopener">HW 2 assigned</a>
         </td>
       </tr>
 
@@ -693,8 +691,24 @@
       </tr>
 
       <tr class="due">
-        <td class="wk">6</td>
+        <td class="wk">5</td>
         <td class="date">Oct 8</td>
+        <td class="topic">
+          Biologically-inspired search
+          <span class="jc">Journal club: Wolpert &amp; Macready (1997)</span>
+        </td>
+        <td class="links">
+          <a href="LINK::slides-week05" target="_blank" rel="noopener">Slides</a>
+          <a href="LINK::notebook-week05" target="_blank" rel="noopener">Notebook: GA &amp; PSO</a>
+          <a href="LINK::paper-week05" target="_blank" rel="noopener">Paper</a>
+          <a class="due-item" href="LINK::hw2" target="_blank" rel="noopener">HW 2 due</a>
+          <a href="LINK::project-proposal" target="_blank" rel="noopener">Project proposal assigned</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="wk">6</td>
+        <td class="date">Oct 15</td>
         <td class="topic">
           Rules &amp; knowledge-based systems
           <span class="jc">Journal club: Kennedy &amp; Eberhart (1995)</span>
@@ -703,14 +717,12 @@
           <a href="LINK::slides-week06" target="_blank" rel="noopener">Slides</a>
           <a href="LINK::notebook-week06" target="_blank" rel="noopener">Notebook: chaining engine</a>
           <a href="LINK::paper-week06" target="_blank" rel="noopener">Paper</a>
-          <a class="due-item" href="LINK::hw2" target="_blank" rel="noopener">HW 2 due</a>
-          <a href="LINK::project-proposal" target="_blank" rel="noopener">Project proposal assigned</a>
         </td>
       </tr>
 
       <tr>
         <td class="wk">7</td>
-        <td class="date">Oct 15</td>
+        <td class="date">Oct 22</td>
         <td class="topic">
           Building an expert system: CLIPS / clipspy
           <span class="jc">Journal club: Shortliffe et al. (1973)</span>
@@ -725,7 +737,7 @@
 
       <tr class="due">
         <td class="wk">8</td>
-        <td class="date">Oct 22</td>
+        <td class="date">Oct 29</td>
         <td class="topic">
           Bayesian networks; state machines
           <span class="jc">Journal club: Miller et al. (1982)</span>
@@ -739,9 +751,9 @@
         </td>
       </tr>
 
-      <tr>
+      <tr class="due">
         <td class="wk">9</td>
-        <td class="date">Oct 29</td>
+        <td class="date">Nov 5</td>
         <td class="topic">
           Information theory &amp; machine learning
           <span class="jc">Journal club: de Dombal et al. (1972)</span>
@@ -750,12 +762,13 @@
           <a href="LINK::slides-week09" target="_blank" rel="noopener">Slides</a>
           <a href="LINK::notebook-week09" target="_blank" rel="noopener">Notebook: entropy &amp; trees</a>
           <a href="LINK::paper-week09" target="_blank" rel="noopener">Paper</a>
+          <a class="due-item" href="LINK::hw3" target="_blank" rel="noopener">HW 3 due</a>
         </td>
       </tr>
 
-      <tr class="due">
+      <tr>
         <td class="wk">10</td>
-        <td class="date">Nov 5</td>
+        <td class="date">Nov 12</td>
         <td class="topic">
           Deep learning &amp; large language models
           <span class="jc">Journal club: Quinlan (1986)</span>
@@ -764,13 +777,12 @@
           <a href="LINK::slides-week10" target="_blank" rel="noopener">Slides</a>
           <a href="LINK::notebook-week10" target="_blank" rel="noopener">Notebook: tokens &amp; attention</a>
           <a href="LINK::paper-week10" target="_blank" rel="noopener">Paper</a>
-          <a class="due-item" href="LINK::hw3" target="_blank" rel="noopener">HW 3 due</a>
         </td>
       </tr>
 
-      <tr>
+      <tr class="due">
         <td class="wk">11</td>
-        <td class="date">Nov 12</td>
+        <td class="date">Nov 19</td>
         <td class="topic">
           Explainable AI
           <span class="jc">Journal club: Vaswani et al. (2017)</span>
@@ -779,20 +791,6 @@
           <a href="LINK::slides-week11" target="_blank" rel="noopener">Slides</a>
           <a href="LINK::notebook-week11" target="_blank" rel="noopener">Notebook: SHAP &amp; LIME</a>
           <a href="LINK::paper-week11" target="_blank" rel="noopener">Paper</a>
-        </td>
-      </tr>
-
-      <tr class="due">
-        <td class="wk">12</td>
-        <td class="date">Nov 19</td>
-        <td class="topic">
-          Bias &amp; fairness in AI
-          <span class="jc">Journal club: Caruana et al. (2015)</span>
-        </td>
-        <td class="links">
-          <a href="LINK::slides-week12" target="_blank" rel="noopener">Slides</a>
-          <a href="LINK::notebook-week12" target="_blank" rel="noopener">Notebook: fairness audit</a>
-          <a href="LINK::paper-week12" target="_blank" rel="noopener">Paper</a>
           <a class="due-item" href="LINK::hw4" target="_blank" rel="noopener">HW 4 due</a>
         </td>
       </tr>
@@ -805,16 +803,16 @@
       </tr>
 
       <tr>
-        <td class="wk">13</td>
+        <td class="wk">12</td>
         <td class="date">Dec 3</td>
         <td class="topic">
-          Agentic AI
-          <span class="jc">Journal club: Obermeyer et al. (2019)</span>
+          Bias &amp; fairness in AI
+          <span class="jc">Journal club: Caruana et al. (2015)</span>
         </td>
         <td class="links">
-          <a href="LINK::slides-week13" target="_blank" rel="noopener">Slides</a>
-          <a href="LINK::notebook-week13" target="_blank" rel="noopener">Notebook: clinical agent</a>
-          <a href="LINK::paper-week13" target="_blank" rel="noopener">Paper</a>
+          <a href="LINK::slides-week12" target="_blank" rel="noopener">Slides</a>
+          <a href="LINK::notebook-week12" target="_blank" rel="noopener">Notebook: fairness audit</a>
+          <a href="LINK::paper-week12" target="_blank" rel="noopener">Paper</a>
         </td>
       </tr>
 

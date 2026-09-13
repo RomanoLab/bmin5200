@@ -4,13 +4,13 @@ Course materials for BMIN 5200, Perelman School of Medicine, University of Penns
 
 Fall 2026 moved this course off Canvas. Canvas is still used for assignment submission and
 grades, because Penn requires it; everything else — the schedule, the slides, the papers, the
-assignment specifications, and thirteen in-class coding notebooks — lives here and on Penn Box.
+assignment specifications, and the in-class coding notebooks — lives here and on Penn Box.
 
 ## Layout
 
 ```
 new-course-site/       The public course site. One hand-written HTML file.
-exercises/             13 Colab-ready notebooks, one per class meeting.
+exercises/             13 Colab-ready notebooks; 12 are scheduled this year.
 tools/                 extract_imscc.py, apply_links.py
 old-canvas/            The Canvas export and a readable extraction of it.  [not committed]
 links.tsv              Every Box URL in the project, in one table.
@@ -32,7 +32,7 @@ It is source material for the refactor, not part of the course site.
 
 Everything else is committed. In particular **`exercises/` must be**: the notebook links on the
 site are `colab.research.google.com/github/RomanoLab/bmin5200/blob/main/exercises/weekNN.ipynb`,
-which Colab resolves against the public repo. No notebooks in the repo means thirteen dead links.
+which Colab resolves against the public repo. No notebooks in the repo means a page of dead links.
 `tools/` and `links.tsv` must be there too — the deploy workflow runs `apply_links.py` from the
 repository root.
 
@@ -62,9 +62,10 @@ pairs, so everyone still presents exactly once. See `journal-club-2026.md`.
 Previously the only code students wrote was in four take-home assignments; the first of those
 contains no code at all. See `exercises/README.md`.
 
-**Calendar rebuilt for 13 meetings.** Penn's Fall 2026 breaks (Oct 1–4, Nov 26–29) take out two
-Thursdays. Thirteen meetings, thirteen lecture topics, one per week. No class time is spent on
-final presentations — those remain recorded videos, as in 2025.
+**Calendar rebuilt for 12 meetings.** Penn's Fall 2026 breaks (Oct 1–4, Nov 26–29) take out two
+Thursdays, and Sep 24 was cancelled after the calendar was set. Twelve meetings, twelve lecture
+topics, one per week; the agentic AI lecture came out to absorb the lost week. No class time is
+spent on final presentations — those remain recorded videos, as in 2025.
 
 **Materials moved to Box.** Slides and journal club PDFs are behind PennKey SSO. Nothing
 copyrighted is committed to this repository.

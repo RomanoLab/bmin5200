@@ -125,7 +125,7 @@ anchors too. The attributes are written out per link on purpose.
 
 ### Releasing a notebook
 
-The 13 in-class notebooks are a special case: they live in this repo, so there is no upload to
+The in-class notebooks are a special case: they live in this repo, so there is no upload to
 wait for. Their Colab URLs are already written into `links.tsv`, but **commented out**, which
 leaves them greyed as "(TBA)" like everything else. To release one week's notebook, delete the
 leading `#` on its `notebook-weekNN` line, commit, and push. To pull it back, restore the `#`.

@@ -50,6 +50,21 @@ actually changed.
 **Lecture content is unchanged from 2025.** Topics and the PowerPoint decks must not be
 significantly altered. The refactor changed structure, not subject matter.
 
+**Sep 24 2026 is cancelled and the agentic AI lecture is cut.** Joe is out of the country that
+Thursday, which takes the term from 13 meetings to 12. Agentic AI was the one to go: it was a
+guest lecture, it sat last so nothing downstream depended on it, and it was the only lecture
+with no journal club paper riding on it. Everything from biologically-inspired search onward
+moved one meeting later, so the term now ends on bias & fairness. Meeting numbers still equal
+topic numbers, which is why every `slides-weekNN` / `notebook-weekNN` / `paper-weekNN` key and
+every `exercises/weekNN.ipynb` kept its number — the `*-week13` keys and `week13.ipynb` are
+simply unused. Do not renumber them.
+
+**Homework deadlines were deliberately frozen through the shift.** HW 1–4 keep the due dates
+students were given (Sep 23, Oct 7, Nov 4, Nov 18); only the assigned dates moved, to stay
+behind the lectures they cover. The one deadline that did move is the project proposal, Oct 21
+to Oct 28, because the syllabus justifies that date as "the week after CLIPS is covered" and
+CLIPS moved to Oct 22. Keep those two facts together if either changes.
+
 ## Things that will bite you
 
 **The repo is CC BY-NC-SA 4.0; PennKey-gated material is not.** `LICENSE` carries the full text
@@ -108,7 +123,7 @@ account `jdromano2` would knock this site offline.
 ```
 new-course-site/   The site. index.html (one file), CNAME, .nojekyll, favicons/,
                    syllabus-2026.pdf (committed build product, see below).
-exercises/         13 Colab notebooks, one per meeting. Must stay in the repo —
+exercises/         13 Colab notebooks; 12 scheduled this year. Must stay in the repo —
                    the site's links resolve against the public repo.
 tools/             apply_links.py (link resolver), extract_imscc.py (Canvas export reader)
 links.tsv          Every Box URL, in one table.
